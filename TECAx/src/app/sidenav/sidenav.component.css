@@ -1,0 +1,19 @@
+nav {
+  width: 200px;
+  background: #f4f4f4;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+li.active {
+  background-color: #007bff;
+  color: white;
+}
