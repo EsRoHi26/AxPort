@@ -1,1 +1,12 @@
-<p>rec works!</p>
+<div class="flex">
+  @for (q of recursos; track q.id){
+  <div class="card flex-1 max-w-80 mx-3">
+    <img src="{{q.imagen}}" class="card-img-top" alt=" " />
+    <div class="card-body">
+      <h2 class="card-title">{{q.nombre}}</h2>
+      <p class="card-text">{{q.descripcion}}</p>
+      <a href="{{q.url}}" class="btn btn-primary" alt="Boton para ir al recurso (abre en esta pagina)">Ir a {{q.nombre}}</a>
+    </div>
+  </div>
+  }
+</div>

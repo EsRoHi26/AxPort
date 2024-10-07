@@ -4,7 +4,9 @@ VALUES ('Formulario de Inscripción', 'Formulario para inscribirse en el program
 
 -- Insert into Recursos_Adicionales
 INSERT INTO Recursos_Adicionales (nombre, descripcion, URL, imagen, idFormulario)
-VALUES ('Guía de Usuario', 'Guía para el uso del sistema.', 'http://example.com/guia', 'http://example.com/imagen.jpg', 1);
+Values('CONAPDIS', 'El Conapdis es el rector en discapacidad, responsable de promover y fiscalizar el cumplimiento de los derechos humanos de la población con discapacidad, para fomentar su desarrollo inclusivo en todos los ámbitos de la sociedad.', 'https://conapdis.go.cr', '../assets/CONAPDIS.png', 1),
+('Wheelmap', 'Wheelmap es una plataforma en línea que permite a los usuarios encontrar y compartir información sobre la accesibilidad de lugares en todo el mundo.', 'https://wheelmap.org', '../assets/WheelMap.png', 1),
+('Blog de Apps para Personas con Discapacidad', 'Blog que ofrece información sobre aplicaciones móviles y tecnología accesible para personas con discapacidad.', 'https://gaptain.com/blog/18-herramientas-digitales-para-personas-con-discapacidad/', '../assets/18.png', 1);
 
 -- Insert into Informacion
 INSERT INTO Informacion (tipo, titulo, descripcion, idRecurso)
