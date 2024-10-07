@@ -81,7 +81,7 @@ async function createTable() {
       ID SERIAL PRIMARY KEY,
       pregunta VARCHAR(200),
       tipoRespuesta SMALLINT,
-      opcionesRespuesta VARCHAR(100),
+      opcionesRespuesta VARCHAR(200),
       idFormulario SMALLINT,
       FOREIGN KEY (idFormulario) REFERENCES Formularios(ID)
     );
@@ -106,6 +106,15 @@ async function createTable() {
       idEncargado SMALLINT,
       FOREIGN KEY (idFormulario) REFERENCES Formularios(ID),
       FOREIGN KEY (idEncargado) REFERENCES Miembros(ID)
+    );
+
+    CREATE TABLE IF NOT EXISTS Respuestas (
+      ID SERIAL PRIMARY KEY,
+      respuesta VARCHAR(1000),
+      idPregunta SMALLINT,
+      idFormularioRec INT,
+      FOREIGN KEY (idPregunta) REFERENCES Preguntas(ID),
+      FOREIGN KEY (idFormularioRec) REFERENCES FormulariosRecibidos(ID)
     );
   `;
   await pool.query(query);
