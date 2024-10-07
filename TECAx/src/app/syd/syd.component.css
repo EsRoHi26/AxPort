@@ -16,32 +16,52 @@ h2 {
     padding: 10px;
     padding-left: 20px
 }
+
 ul{
+    counter-reset: sub-item;
     list-style-type: disc; 
     padding-left: 40px; 
 }
+
 p{
     padding-left: 20px;
     padding-right: 60px;
 }
 ol {
     counter-reset: item;
-    padding-left: 40px; 
-    list-style: none; 
+    padding-left: 60px;
+    list-style: none;
 }
 
 ol li {
-    counter-increment: item; 
-    margin: 10px 0; 
-    position: relative; 
-    font-size: 16px; 
+    counter-increment: item;
+    margin: 10px 0;
+    position: relative;
+    font-size: 16px;
 }
 
-/* Agrega números personalizados a la lista */
 ol li::before {
     content: counter(item) ". ";
-    position: absolute; 
-    left: -20px; 
-    font-weight: bold; 
-   
+    position: absolute;
+    left: -20px;
+    font-weight: bold;
+}
+
+ol.letras {
+    counter-reset: sub-item;
+    padding-left: 30px;
+    margin: 10px 0;
+}
+
+ol.letras li {
+    counter-increment: sub-item;
+    margin: 5px 0;
+    position: relative;
+}
+
+ol.letras li::before {
+    content: counter(sub-item, lower-alpha) ". ";
+    position: absolute;
+    left: -20px;
+    font-weight: bold;
 }

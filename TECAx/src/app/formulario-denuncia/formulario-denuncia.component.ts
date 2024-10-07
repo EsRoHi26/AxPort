@@ -54,7 +54,8 @@ export class FormularioDenunciaComponent {
         'motivo': new FormControl(''),
         'descripcion': new FormControl('')
     }, {
-        validators: [this.alMenosUnaOpcionSeleccionada,this.alMenosUnaOpcionSeleccionada2]
+        validators: [this.alMenosUnaOpcionSeleccionada,this.alMenosUnaOpcionSeleccionada2,
+            this.alMenosUnaOpcionSeleccionada3,this.alMenosUnaOpcionSeleccionadaArea]
     });
 
     alMenosUnaOpcionSeleccionada(control: AbstractControl): ValidationErrors | null {
@@ -89,6 +90,19 @@ export class FormularioDenunciaComponent {
                 ningunaSeleccionada: true
             };
         } else return null;
+    }
+    alMenosUnaOpcionSeleccionadaArea(control: AbstractControl): ValidationErrors | null {
+        const formGroup = control as FormGroup;
+        const ambiente = formGroup.get('ambiente')?.value;
+        const informacion = formGroup.get('informacion')?.value;
+        const tecnologias = formGroup.get('tecnologias')?.value;
+        const servicios = formGroup.get('servicios')?.value;
+        const actitudinal = formGroup.get('actitudinal')?.value;
+       
+            return ambiente || informacion ||tecnologias ||servicios ||actitudinal ? null : {
+                ningunaSeleccionada: true
+            };
+   
     }
     validarCedula(control: AbstractControl): ValidationErrors | null {
         const cedula = control.value;
