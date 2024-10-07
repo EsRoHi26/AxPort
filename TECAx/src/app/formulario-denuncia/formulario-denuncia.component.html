@@ -1,0 +1,191 @@
+<h2>Formulario de denuncias</h2>
+<p>Este formulario sirve para realizar una denuncia. Tenga en cuenta que los campos a
+    completar varían en función de si usted es estudiante, funcionario o visitante;
+    por esta razón, asegúrese de completar la primera pregunta.</p>
+<form [formGroup]="formularioDenuncia">
+    <fieldset>
+        <legend>Datos Personales</legend>
+        <label for="rol">¿Usted es?</label>
+        <select name="rolDenunciante" formControlName="rol" id="rol">
+            <option *ngFor="let rol of roles" [value]="rol">{{ rol }}</option>
+        </select>
+
+        <div *ngIf="formularioDenuncia.get('rol')?.invalid && formularioDenuncia.get('rol')?.touched" role="alert"
+            class="aviso">
+            Debe responder este campo.
+        </div>
+
+
+        <label for="nombre">Nombre</label>
+        <input type="text" formControlName="nombre" name="nombre" id="nombre" required>
+
+        <label for="correo">Correo</label>
+
+        <input type="email" formControlName="correo" name="correo" id="correo" required>
+        <div *ngIf="formularioDenuncia.get('correo')?.invalid && formularioDenuncia.get('correo')?.touched" role="alert"
+            class="aviso">
+            Su correo electrónico es inválido.
+        </div>
+
+        <div class="form" *ngIf="formularioDenuncia.get('rol')?.value === 'Estudiante'">
+            <label for="carrera">Carrera</label>
+            <input type="text" formControlName="carrera" name="carrera" id="carrera" required>
+
+            <label for="carné">Carné</label>
+            <input type="text" formControlName="carne" name="carné" id="carné" required>
+            <div *ngIf="formularioDenuncia.get('carne')?.invalid && formularioDenuncia.get('carne')?.touched"
+                role="alert" class="aviso">
+                Solamente puede escribir números en este campo.
+            </div>
+        </div>
+
+        <div class="form"
+            *ngIf="formularioDenuncia.get('rol')?.value === 'Funcionario' || formularioDenuncia.get('rol')?.value === 'Visitante'">
+            <label for="dependencia">Dependencia</label>
+            <input type="text" formControlName="dependencia" name="dependencia" id="dependencia" required>
+
+            <label for="cédula">Cédula</label>
+            <input type="text" formControlName="cedula" name="cedula" id="cédula" required>
+            <div *ngIf="formularioDenuncia.get('cedula')?.invalid && formularioDenuncia.get('cedula')?.touched"
+                role="alert" class="aviso">
+                Solamente puede escribir números en este campo.
+            </div>
+        </div>
+
+        <label for="fecha">Fecha</label>
+        <input type="text" formControlName="fecha" name="fecha" id="fecha" required>
+        <div *ngIf="formularioDenuncia.get('fecha')?.invalid && formularioDenuncia.get('fecha')?.touched" role="alert"
+            class="aviso" aria-live="assertive">
+            Escriba una fecha válida en el formato día/mes/año.
+        </div>
+    </fieldset>
+
+
+
+    <fieldset *ngIf="formularioDenuncia.get('rol')?.value === 'Estudiante'">
+        <legend> Marque la respuesta que sea acorde a su situación:</legend>
+        <fieldset>
+            <legend class="personalizado">Recibió servicios y apoyo del Programa de Admisión Accesible para estudiantes
+                con Discapacidad y
+                Necesidades Educativas (para recibir apoyos en el examen de admisión):
+            </legend>
+            <div class="checkbox">
+                <input type="checkbox" formControlName="si" id="si" (change)="onCheckboxChange('si')">
+                <label for="si">Sí</label>
+            </div>
+            <div class="checkbox">
+                <input type="checkbox" formControlName="no" id="no" (change)="onCheckboxChange('no')">
+                <label for="no">No</label>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend class="personalizado">Forma parte del Programa de Servicios para estudiantes con Discapacidad y
+                Necesidades Educativas
+                (PSED):
+            </legend>
+            <div class="checkbox">
+                <input class="" type="checkbox" formControlName="si2" id="si2" (change)="onCheckboxChange2('si')">
+                <label for="si2">Sí</label>
+            </div>
+            <div class="checkbox">
+                <input type="checkbox" formControlName="no2" id="no2" (change)="onCheckboxChange2('no')">
+                <label for="no2">No</label>
+            </div>
+        </fieldset>
+      </fieldset>
+
+      <fieldset *ngIf="formularioDenuncia.get('rol')?.value === 'Funcionario'">
+        <legend> Marque la respuesta que sea acorde a su situación:</legend>
+        <fieldset>
+            <legend class="personalizado">Recibió servicios y apoyo del Programa Institucional de Equiparación de Oportunidades para Personas
+              con Discapacidad del ITCR:
+            </legend>
+            <div class="checkbox">
+                <input type="checkbox" formControlName="si3" id="si3" (change)="onCheckboxChange3('si')">
+                <label for="si3">Sí</label>
+            </div>
+            <div class="checkbox">
+                <input type="checkbox" formControlName="no3" id="no3" (change)="onCheckboxChange3('no')">
+                <label for="no3">No</label>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend class="personalizado">Ha recibido acompañamiento de (puede marcar varias opciones):
+            </legend>
+            <div class="checkbox">
+              <input type="checkbox" formControlName="CAIS" id="CAIS">
+              <label for="CAIS">Clínica de Atención Integral en Salud (CAIS)</label>
+          </div>
+          <div class="checkbox">
+              <input type="checkbox" formControlName="CISO" id="CISO">
+              <label for="CISO">Comisión Institucional de Salud Ocupacional (CISO)</label>
+          </div>
+          <div class="checkbox">
+              <input type="checkbox" formControlName="caja" id="caja">
+              <label for="caja">Caja Costarricense de Seguro Social</label>
+          </div>
+          <div class="checkbox">
+              <input type="checkbox" formControlName="seguros" id="seguros">
+              <label for="seguros">Instituto Nacional de Seguros</label>
+          </div>
+          <div class="checkbox">
+              <input type="checkbox" formControlName="otroCheckbox" id="otro">
+              <label for="otro">Otro:</label>
+              <input type="text" formControlName="otroCasilla" name="otroCasilla" id="otro">
+
+          </div>
+
+        </fieldset>
+      </fieldset>
+
+    <fieldset>
+        <legend>Sección de denuncia</legend>
+        <fieldset>
+            <legend class="personalizado">Áreas por denunciar (según lo establece la ley 8661):
+            </legend>
+            <div class="checkbox">
+                <input type="checkbox" formControlName="ambiente" id="ambiente">
+                <label for="ambiente">Ambiente (infraestructura)</label>
+            </div>
+            <div class="checkbox">
+                <input type="checkbox" formControlName="informacion" id="informacion">
+                <label for="informacion">Información y Comunicación</label>
+            </div>
+            <div class="checkbox">
+                <input type="checkbox" formControlName="tecnologias" id="tecnologias">
+                <label for="tecnologias">Tecnologías de apoyo a la discapacidad</label>
+            </div>
+            <div class="checkbox">
+              <input type="checkbox" formControlName="servicios" id="servicios">
+                <label for="servicios">Servicios</label>
+            </div>
+            <div class="checkbox">
+                <input type="checkbox" formControlName="actitudinal" id="actitudinal">
+                <label for="actitudinal">Actitudinal (actitudes y acciones de personas)</label>
+            </div>
+        </fieldset>
+        <label for="sede">Seleccione la sede</label>
+        <select name="sedeTEc" formControlName="sede" id="sede" required>
+            <option *ngFor="let sede of sedesTec" [value]="sede">{{ sede }}</option>
+        </select>
+        <div *ngIf="formularioDenuncia.get('sede')?.invalid && formularioDenuncia.get('sede')?.touched" role="alert"
+            class="aviso">
+            Debe seleccionar una sede.
+        </div>
+        <label for="motivo">Motivo de la denuncia</label>
+        <input type="text" formControlName="motivo" name="motivo" id="motivo" required>
+
+        <label for="descripcion">Descripción de los aspectos o situación por denunciar (favor agregar la instancia, el
+            lugar, descripción del
+            servicio no brindado adecuadamente o si se trata de un aspecto actitudinal) :</label>
+        <textarea type="text" class="alto" formControlName="descripcion" name="descripcion" id="descripcion" required>
+        </textarea>
+    </fieldset>
+    <div *ngIf="formularioDenuncia.invalid">
+        <div class="aviso">
+            El envío del formulario solo estará disponible cuando todos los campos se completen correctamente.
+        </div>
+    </div>
+    <button type="submit" [disabled]="formularioDenuncia.invalid">Enviar</button>
+
+</form>
