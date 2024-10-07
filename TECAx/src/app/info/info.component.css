@@ -1,0 +1,42 @@
+.h2 {
+    margin-top: 1.5rem; /* mt-4 */
+    font-size: 1.5rem; /* text-2xl */
+    font-weight: 600; /* font-semibold */
+}
+
+.img-servicio {
+    width: 9rem; /* equivalente a 36 */
+    height: 9rem; /* equivalente a 36 */
+    min-width: 9rem; /* equivalente a 36 */
+    min-height: 9rem; /* equivalente a 36 */
+    object-fit: cover; /* Cambia a object-cover si deseas que la imagen llene el contenedor */
+}
+
+.table-styled {
+    overflow: hidden;
+    width: 100%;
+    border-radius: 8px;
+    border: 2px solid #e7e7e7;
+    background-color: transparent;
+    color: black;
+    font-size: 1rem;
+}
+
+.table-styled table {
+    width: 100%;
+    border-right: hidden;
+    border-left: hidden;
+    border-top: hidden;
+    border-bottom: hidden;
+    border-collapse: collapse;
+}
+
+.table-styled table th{
+    font-weight: 600;
+}
+
+.table-styled table th, .table-styled table td {
+    border: 2px solid #e7e7e7;
+    padding: 8px 16px;
+}
+
