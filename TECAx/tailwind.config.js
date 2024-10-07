@@ -10,6 +10,7 @@ module.exports = {
         'tec-blue': '#002855',
         'tec-red': '#c4242c',
         'tec-title': '#105c7c',
+        'tec-gris':'#e7e7e7',
       },
     },
   },
