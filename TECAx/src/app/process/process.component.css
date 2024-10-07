@@ -1,0 +1,14 @@
+h2{
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+div.header{
+  padding-left: 8px;
+  background-color: #105c7c;
+  border-top-right-radius: 0.75rem /* 12px */;
+  border-bottom-right-radius: 0.75rem /* 12px */;
+  width: 24rem /* 384px */;
+}
