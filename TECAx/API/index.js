@@ -15,6 +15,7 @@ pool.connect((err, client, release) => {
 })
 
 const rutaInfo = require('./endpoints/info')
+const rutaRecursos = require('./endpoints/recursos')
 
 app.use(function (req, res, next) {
 
@@ -32,7 +33,8 @@ app.use(function (req, res, next) {
 
 app.use(express.json()); // para que el servidor entienda json
 
-app.use('/info', rutaInfo ); // ruta para los usuarios
+app.use('/info', rutaInfo );
+app.use('/rec', rutaRecursos );
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
@@ -53,13 +55,13 @@ async function createTable() {
     CREATE TABLE IF NOT EXISTS Formularios (
       ID SERIAL PRIMARY KEY,
       nombre VARCHAR(50),
-      descripcion VARCHAR(100)
+      descripcion VARCHAR(300)
     );
 
     CREATE TABLE IF NOT EXISTS Recursos_Adicionales (
       ID SERIAL PRIMARY KEY,
       nombre VARCHAR(50),
-      descripcion VARCHAR(100),
+      descripcion VARCHAR(300),
       URL VARCHAR(100),
       imagen VARCHAR(100),
       idFormulario SMALLINT,
@@ -70,14 +72,14 @@ async function createTable() {
       ID SERIAL PRIMARY KEY,
       tipo VARCHAR(25),
       titulo VARCHAR(25),
-      descripcion VARCHAR(100),
+      descripcion VARCHAR(300),
       idRecurso SMALLINT,
       FOREIGN KEY (idRecurso) REFERENCES Recursos_Adicionales(ID)
     );
 
     CREATE TABLE IF NOT EXISTS Preguntas (
       ID SERIAL PRIMARY KEY,
-      pregunta VARCHAR(100),
+      pregunta VARCHAR(200),
       tipoRespuesta SMALLINT,
       opcionesRespuesta VARCHAR(100),
       idFormulario SMALLINT,
@@ -113,4 +115,4 @@ async function createTable() {
 }}
 
 
-//createTable()
+createTable()
