@@ -1,0 +1,50 @@
+<h2>Formulario de solicitudes</h2>
+<p>Este formulario sirve para solicitar una reunión con un representante de la comisión
+    para que este pueda evaluar su caso, proponer una solución y, en última instancia,
+    brindarle el apoyo y los servicios acordados. Se le hará llegar la información
+    pertinente a la reunión mediante correo electrónico.</p>
+<form [formGroup]="formularioSolicitud">
+    <fieldset>
+        <legend>Solicitar reunión</legend>
+        
+        <label for="nombre">Nombre</label>
+        <input type="text" formControlName="nombre" name="nombre" id="nombre">
+
+        <label for="correo">Correo</label>
+        <input type="email" formControlName="correo" name="correo" id="correo">
+        <div *ngIf="formularioSolicitud.get('correo')?.invalid && formularioSolicitud.get('correo')?.touched" role="alert" class="aviso">
+                Su correo electrónico es inválido.
+        </div>
+
+
+        <label for="cédula">Cédula</label>
+        <input type="text" formControlName="cedula" name="cedula" id="cédula">
+
+        <div *ngIf="formularioSolicitud.get('cedula')?.invalid && formularioSolicitud.get('cedula')?.touched" role="alert" class="aviso">
+                Solamente puede escribir números en este campo.
+        </div>
+
+        <label for="servicio">Cuéntanos sobre el servicio o la ayuda que deseas recibir.</label>
+        <textarea type="text" class="alto" formControlName="servicio" name="infoServicio" id="servicio">
+        </textarea>
+        <label for="horario">Indique los días y las horas en los que le sea más fácil asistir a la reunión.</label>
+        <textarea type="text" class="alto" formControlName="horario" name="infoHorario" id="horario">
+        </textarea>
+
+        <label for="sede">Seleccione la sede</label>
+        <select name="sedeTEc" formControlName="sede" id="sede">
+            <option *ngFor="let sede of sedesTec" [value]="sede">{{ sede }}</option>
+        </select>
+        <div *ngIf="formularioSolicitud.get('sede')?.invalid && formularioSolicitud.get('sede')?.touched" role="alert" class="aviso">
+                Debe seleccionar una sede.
+        </div>
+
+
+        <div *ngIf="formularioSolicitud.invalid">
+            <div class="aviso">
+                El envío del formulario solo estará disponible cuando todos los campos se completen correctamente.
+            </div>
+        </div>
+        <button type="submit" [disabled]="formularioSolicitud.invalid">Enviar</button>
+    </fieldset>
+</form>

@@ -1,0 +1,47 @@
+a {
+    color: blue;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: darkblue;
+    text-decoration: none;
+}
+
+h2 {
+    font-size: 24px;
+    color: #333;
+    font-weight: bold;
+    padding: 10px;
+    padding-left: 20px
+}
+ul{
+    list-style-type: disc; 
+    padding-left: 40px; 
+}
+p{
+    padding-left: 20px;
+    padding-right: 60px;
+}
+ol {
+    counter-reset: item;
+    padding-left: 40px; 
+    list-style: none; 
+}
+
+ol li {
+    counter-increment: item; 
+    margin: 10px 0; 
+    position: relative; 
+    font-size: 16px; 
+}
+
+/* Agrega números personalizados a la lista */
+ol li::before {
+    content: counter(item) ". ";
+    position: absolute; 
+    left: -20px; 
+    font-weight: bold; 
+   
+}
