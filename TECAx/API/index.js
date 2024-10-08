@@ -17,6 +17,8 @@ pool.connect((err, client, release) => {
 const rutaInfo = require('./endpoints/info')
 const rutaRecursos = require('./endpoints/recursos')
 const rutaForm = require('./endpoints/form')
+const rutaMiembros = require('./endpoints/miembros')
+const rutaNoticias = require('./endpoints/noticias')
 
 app.use(function (req, res, next) {
 
@@ -29,14 +31,20 @@ app.use(function (req, res, next) {
   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
   res.setHeader('Access-Control-Allow-Credentials', true);
 
+  res.setHeader('Content-Type', 'application/json; charset=utf-8');
+
+
   next();
 });
 
-app.use(express.json()); // para que el servidor entienda json
+//app.use(express.json()); // para que el servidor entienda json
+app.use(express.json({ limit: '1mb', type: 'application/json' }));
 
 app.use('/info', rutaInfo );
 app.use('/rec', rutaRecursos );
 app.use('/form', rutaForm);
+app.use('/miem', rutaMiembros );
+app.use('/not', rutaNoticias );
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
@@ -72,11 +80,22 @@ async function createTable() {
 
     CREATE TABLE IF NOT EXISTS Informacion (
       ID SERIAL PRIMARY KEY,
-      tipo VARCHAR(25),
+      tipo int,
       titulo VARCHAR(25),
       descripcion VARCHAR(300),
-      idRecurso SMALLINT,
-      FOREIGN KEY (idRecurso) REFERENCES Recursos_Adicionales(ID)
+      nombreRecurso VARCHAR (30),
+      linkRecurso VARCHAR (60),
+      descripcionRecurso VARCHAR (120)
+    );
+
+    CREATE TABLE IF NOT EXISTS Noticias (
+      ID SERIAL PRIMARY KEY,
+      fecha VARCHAR(20),
+      titulo VARCHAR(180),
+      linkImagen VARCHAR (180),
+      descripcionImagen VARCHAR(180),
+      linkNoticia VARCHAR (180),
+      descripcionNoticia VARCHAR (180)
     );
 
     CREATE TABLE IF NOT EXISTS Preguntas (

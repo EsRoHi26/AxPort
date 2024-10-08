@@ -1,21 +1,18 @@
 a {
     color: blue;
     font-weight: bold;
-    text-decoration: underline;
 }
 
 a:hover {
     color: darkblue;
-    text-decoration: none;
 }
 
 h2 {
-    font-size: 24px;
-    color: #333;
-    font-weight: bold;
-    padding: 10px;
-    padding-left: 20px
+    margin-top: 1.5rem;
+    font-weight: 700;
+    color: #4d4d4d; 
 }
+
 
 ul{
     counter-reset: sub-item;
@@ -24,8 +21,8 @@ ul{
 }
 
 p{
-    padding-left: 20px;
-    padding-right: 60px;
+    margin-top: 0.75rem;
+    font-weight: 400;
 }
 ol {
     counter-reset: item;
@@ -37,7 +34,6 @@ ol li {
     counter-increment: item;
     margin: 10px 0;
     position: relative;
-    font-size: 16px;
 }
 
 ol li::before {

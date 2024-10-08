@@ -44,3 +44,19 @@
 .collapse.show {
   visibility: visible;
 }
+
+
+h2 {
+    margin-top: 1.5rem;
+    font-weight: 700;
+    color: #4d4d4d; 
+}
+
+.text{
+    margin-top: 0.75rem;
+    font-weight: 400;
+}
+
+p{
+    font-weight: 400;
+}
