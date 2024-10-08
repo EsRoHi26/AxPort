@@ -14,24 +14,24 @@ VALUES ('General', 'Introducción al Programa', 'Un documento introductorio sobr
 
 -- Insert into Preguntas
 INSERT INTO Preguntas (pregunta, idFormulario, tipoRespuesta, opcionesRespuesta) VALUES
-('Nombre', 1, 2, NULL),
-('Correo', 1, 2, NULL),
-('Cedula', 1, 2, NULL),
-('Cuéntanos sobre el servicio o la ayuda que deseas recibir.', 1, 2, NULL),
-('Indique los dias y las horas en los que le sea mas facil asistir a la reunion.', 1, 3, NULL),
-('Seleccione la sede', 1, 3, 'Sede A, Sede B, Sede C'),
-('Carrera', 1, 2, NULL),
-('Fecha', 1, 3, NULL),
-('Carne', 1, 2, NULL),
-('Rol', 1, 3, 'Estudiante, Docente, Administrativo, Otro'),
-('Recibió servicios y apoyo del Programa de Admisión Accesible para estudiantes con Discapacidad y Necesidades Educativas', 1, 1, 'Si, No'),
-('Forma parte del Programa de Servicios para estudiantes con Discapacidad y Necesidades Educativas', 1, 1, 'Si, No'),
-('Area de la denuncia', 1, 3, NULL),
-('Motivo', 1, 2, NULL),
-('Descripción de los aspectos o situación por denunciar', 1, 2, NULL),
-('Dependencia',1,2,NULL),
-('Recibió servicios y apoyo del Programa Institucional de Equiparación de Oportunidades para Personas con Discapacidad del ITCR',1,1,'Si, No'),
-('Acompañamiento',1,3,'Clínica de Atención Integral en Salud (CAIS), Comisión Institucional de Salud Ocupacional (CISO), Caja Costarricense de Seguro Social, Instituto Nacional de Seguros, Otro');
+('Nombre', 2, 2, NULL),
+('Correo', 2, 2, NULL),
+('Cedula', 2, 2, NULL),
+('Cuéntanos sobre el servicio o la ayuda que deseas recibir.', 2, 2, NULL),
+('Indique los dias y las horas en los que le sea mas facil asistir a la reunion.', 2, 3, NULL),
+('Seleccione la sede', 2, 3, 'Sede A, Sede B, Sede C'),
+('Carrera', 2, 2, NULL),
+('Fecha', 2, 3, NULL),
+('Carne', 2, 2, NULL),
+('Rol', 2, 3, 'Estudiante, Docente, Administrativo, Otro'),
+('Recibió servicios y apoyo del Programa de Admisión Accesible para estudiantes con Discapacidad y Necesidades Educativas', 2, 1, 'Si, No'),
+('Forma parte del Programa de Servicios para estudiantes con Discapacidad y Necesidades Educativas', 2, 1, 'Si, No'),
+('Area de la denuncia', 2, 3, NULL),
+('Motivo', 2, 2, NULL),
+('Descripción de los aspectos o situación por denunciar', 2, 2, NULL),
+('Dependencia',2,2,NULL),
+('Recibió servicios y apoyo del Programa Institucional de Equiparación de Oportunidades para Personas con Discapacidad del ITCR',2,1,'Si, No'),
+('Acompañamiento',2,3,'Clínica de Atención Integral en Salud (CAIS), Comisión Institucional de Salud Ocupacional (CISO), Caja Costarricense de Seguro Social, Instituto Nacional de Seguros, Otro');
 
 -- Insert into Miembros
 INSERT INTO Miembros (nombre, email, telefono, sede)

@@ -16,6 +16,7 @@ pool.connect((err, client, release) => {
 
 const rutaInfo = require('./endpoints/info')
 const rutaRecursos = require('./endpoints/recursos')
+const rutaForm = require('./endpoints/form')
 
 app.use(function (req, res, next) {
 
@@ -35,6 +36,7 @@ app.use(express.json()); // para que el servidor entienda json
 
 app.use('/info', rutaInfo );
 app.use('/rec', rutaRecursos );
+app.use('/form', rutaForm);
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
