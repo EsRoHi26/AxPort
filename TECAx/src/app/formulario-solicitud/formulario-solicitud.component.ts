@@ -1,17 +1,6 @@
-import {
-    Component
-} from '@angular/core';
-import {
-    ReactiveFormsModule,
-    FormGroup,
-    FormControl,
-    Validators,
-    AbstractControl,
-    ValidationErrors
-} from '@angular/forms';
-import {
-    CommonModule
-} from '@angular/common';
+import {Component} from '@angular/core';
+import {ReactiveFormsModule,FormGroup,FormControl,Validators,AbstractControl,ValidationErrors} from '@angular/forms';
+import {CommonModule} from '@angular/common';
 @Component({
     selector: 'app-formulario-solicitud',
     standalone: true,
@@ -41,6 +30,28 @@ export class FormularioSolicitudComponent {
         }
         return null;
     }
+    constructor() {
+        this.formularioSolicitud.get('sede')?.setValue('');
+    }
+    onSubmit() {
+        if (this.formularioSolicitud.valid) {
+          const formularioValores = this.formularioSolicitud.value;
+          console.log('Formulario Valores:', formularioValores);
+          
+          const jsonResultado = JSON.stringify(formularioValores);
+          console.log('Formulario en formato JSON:', jsonResultado);
+          /*
+          El campo horario se refiere a la pregunta 
+          Indique los días y las horas en los que le sea más fácil asistir a la reunión.
 
-
+          El campo servicio a la pregunta
+          Cuéntanos sobre el servicio o la ayuda que deseas recibir.
+          */
+          
+        
+        } else {
+          console.log('Formulario no válido');
+        }
+      
+    }
 }

@@ -3,7 +3,7 @@
     para que este pueda evaluar su caso, proponer una solución y, en última instancia,
     brindarle el apoyo y los servicios acordados. Se le hará llegar la información
     pertinente a la reunión mediante correo electrónico.</p>
-<form [formGroup]="formularioSolicitud">
+<form [formGroup]="formularioSolicitud" (ngSubmit)="onSubmit()">
     <fieldset>
         <legend>Solicitar reunión</legend>
         
@@ -25,20 +25,18 @@
         </div>
 
         <label for="servicio">Cuéntanos sobre el servicio o la ayuda que deseas recibir.</label>
-        <textarea type="text" class="alto" formControlName="servicio" name="infoServicio" id="servicio">
-        </textarea>
+        <textarea class="alto" formControlName="servicio" name="infoServicio" id="servicio" required></textarea>
+
         <label for="horario">Indique los días y las horas en los que le sea más fácil asistir a la reunión.</label>
-        <textarea type="text" class="alto" formControlName="horario" name="infoHorario" id="horario">
-        </textarea>
+        <textarea class="alto" formControlName="horario" name="infoHorario" id="horario" required></textarea>
 
         <label for="sede">Seleccione la sede</label>
         <select name="sedeTEc" formControlName="sede" id="sede">
-            <option *ngFor="let sede of sedesTec" [value]="sede">{{ sede }}</option>
+            <option *ngFor="let sedes of sedesTec" [value]="sedes">{{ sedes }}</option>
         </select>
         <div *ngIf="formularioSolicitud.get('sede')?.invalid && formularioSolicitud.get('sede')?.touched" role="alert" class="aviso">
                 Debe seleccionar una sede.
         </div>
-
 
         <div *ngIf="formularioSolicitud.invalid">
             <div class="aviso">

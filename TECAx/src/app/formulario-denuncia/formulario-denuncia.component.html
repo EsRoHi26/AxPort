@@ -2,7 +2,7 @@
 <p>Este formulario sirve para realizar una denuncia. Tenga en cuenta que los campos a
     completar varían en función de si usted es estudiante, funcionario o visitante;
     por esta razón, asegúrese de completar la primera pregunta.</p>
-<form [formGroup]="formularioDenuncia">
+<form [formGroup]="formularioDenuncia" (ngSubmit)="onSubmit()">
     <fieldset>
         <legend>Datos Personales</legend>
         <label for="rol">¿Usted es?</label>
@@ -132,10 +132,14 @@
               <input type="checkbox" formControlName="otroCheckbox" id="otro">
               <label for="otro">Otro:</label>
               <input type="text" formControlName="otroCasilla" name="otroCasilla" id="otro">
-
+            
           </div>
-
+          
         </fieldset>
+        <div *ngIf="formularioDenuncia.get('otroCasilla')?.invalid && formularioDenuncia.get('otroCasilla')?.touched" role="alert"
+          class="aviso">
+          Usted ha marcado la casilla Otro, debe indicar cuál acompañamiento ha recibido.
+          </div>
       </fieldset>
 
     <fieldset>
@@ -178,8 +182,7 @@
         <label for="descripcion">Descripción de los aspectos o situación por denunciar (favor agregar la instancia, el
             lugar, descripción del
             servicio no brindado adecuadamente o si se trata de un aspecto actitudinal) :</label>
-        <textarea type="text" class="alto" formControlName="descripcion" name="descripcion" id="descripcion" required>
-        </textarea>
+            <textarea class="alto" formControlName="descripcion" name="descripcion" id="descripcion" required></textarea>
     </fieldset>
     <div *ngIf="formularioDenuncia.invalid">
         <div class="aviso">
