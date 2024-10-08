@@ -9,17 +9,19 @@ ul {
 }
 
 li {
+  font-weight: 600;
   padding: 10px;
   cursor: pointer;
   border-right-width: 1px;
-  border-right-color: #474747;
-  border-bottom-width: 1px;
-  border-bottom-color: #474747;
+  border-right-color: #ffffff;
+  border-bottom-width: 1.5px;
+  border-bottom-color: #dddddd;
 }
 
 li.active {
-  color: #002855;
+  background-color: #f1f1f1;
+  color: #105c7c;
   border-left-width: 5px;
-  border-left-color: #002855;
+  border-left-color: #105c7c;
   border-right-color: #ffffff;
 }

@@ -25,7 +25,7 @@
     width: 100%;
     border-radius: 8px;
     border: 2px solid #e7e7e7;
-    background-color: transparent;
+    background-color: white;
     color: black;
     font-size: 1rem;
 }
@@ -54,4 +54,22 @@
     font-weight: 600; 
     display: block; 
     overflow: hidden; 
+}
+
+.div-noticia {
+    margin-top: 1rem; /* mt-3 en Bootstrap generalmente representa 1rem */
+    border-width: 2px; /* border-2 indica un ancho de borde de 2px */
+    border-style: solid; /* Necesitas definir el estilo del borde */
+    border-color: #e7e7e7; /* Suponiendo que 'tec-gris' es una variable CSS o color definido en otro lugar */
+    border-radius: 0.5rem; /* rounded-lg en Bootstrap generalmente representa 0.5rem */
+    background-color: #ffffff; /* Suponiendo que 'tec-title' es una variable CSS o color definido en otro lugar */
+}
+
+.text-enlace {
+    color: blue;
+    font-weight: 600;
+}
+
+.text-enlace:hover {
+    color: darkblue;
 }
