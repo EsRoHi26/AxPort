@@ -1,23 +1,49 @@
-.h2 {
-    margin-top: 1.5rem; /* mt-4 */
-    font-size: 1.5rem; /* text-2xl */
-    font-weight: 600; /* font-semibold */
+h2 {
+    margin-top: 1.5rem;
+    font-weight: 700;
+    color: #4d4d4d; 
 }
 
-.h3-noticia{
-    margin-top: 0.5rem; /* mt-2: margen superior de 0.5rem (8px) */
-    font-size: 1rem; /* text-base: tamaño de fuente base */
-    font-weight: 600; /* font-semibold: peso de fuente semibold (600) */
-    display: block; /* block: elemento de tipo bloque */
-    overflow: hidden; /* overflow-hidden: oculta el contenido desbordado */
+.li-servicio{
+    margin-top: 0.75rem;
+    display: flex;
+    align-items: center;
+}
+
+.h2-noticia{
+    font-weight: 600;
+    color: white; 
+    padding: 12px;
+    text-align: center;
+}
+
+.text{
+    margin-top: 0.75rem;
+    font-weight: 400;
+}
+
+.text-servicio {
+    margin-left: 20px;
+    font-weight: 400;
+}
+
+p{
+    font-weight: 400;
+}
+
+h3{
+    margin-top: 0.5rem;  
+    font-weight: 600; 
+    display: block; 
+    overflow: hidden;
 }
 
 .img-servicio {
-    width: 9rem; /* equivalente a 36 */
-    height: 9rem; /* equivalente a 36 */
-    min-width: 9rem; /* equivalente a 36 */
-    min-height: 9rem; /* equivalente a 36 */
-    object-fit: cover; /* Cambia a object-cover si deseas que la imagen llene el contenedor */
+    width: 9rem; 
+    height: 9rem; 
+    min-width: 9rem; 
+    min-height: 9rem; 
+    object-fit: cover; 
 }
 
 .table-styled {
@@ -27,7 +53,7 @@
     border: 2px solid #e7e7e7;
     background-color: white;
     color: black;
-    font-size: 1rem;
+
 }
 
 .table-styled table {
@@ -40,7 +66,8 @@
 }
 
 .table-styled table th{
-    font-weight: 600;
+    color: #4d4d4d; 
+    font-weight: 700;
 }
 
 .table-styled table th, .table-styled table td {
@@ -49,20 +76,23 @@
 }
 
 .span-date{
-    font-size: 1rem; 
-
     font-weight: 600; 
     display: block; 
     overflow: hidden; 
 }
 
 .div-noticia {
-    margin-top: 1rem; /* mt-3 en Bootstrap generalmente representa 1rem */
-    border-width: 2px; /* border-2 indica un ancho de borde de 2px */
-    border-style: solid; /* Necesitas definir el estilo del borde */
-    border-color: #e7e7e7; /* Suponiendo que 'tec-gris' es una variable CSS o color definido en otro lugar */
-    border-radius: 0.5rem; /* rounded-lg en Bootstrap generalmente representa 0.5rem */
-    background-color: #ffffff; /* Suponiendo que 'tec-title' es una variable CSS o color definido en otro lugar */
+    margin-top: 1rem; 
+    border-width: 2px; 
+    border-style: solid; 
+    border-color: #e7e7e7; 
+    border-radius: 0.5rem; 
+    background-color: #ffffff; 
+}
+
+.img-noticia{
+    border-top-left-radius: 0.35rem;
+    border-top-right-radius: 0.35rem;
 }
 
 .text-enlace {

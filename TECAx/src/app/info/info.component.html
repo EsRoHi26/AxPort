@@ -2,123 +2,63 @@
     <div class="flex">        
         <!-- Contenido principal -->
         <div class="w-4/5 pr-8">
-            <!-- <div class="rounded-3xl overflow-hidden">  
-                <iframe 
-                    src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1" 
-                    width=100% 
-                    height= 315 
-                    frameborder="0" 
-                    allow="autoplay; encrypted-media" 
-                    allowfullscreen>
-                </iframe>
-            </div> -->
+            @for (q of infoGeneral; track q.tipo) {
+                <h2 class="mt-0 text-xl md:text-2xl">{{q.titulo}}</h2>
+                <p class="text text-base md:text-lg">{{q.descripcion}}</p>
+            }
 
-            <h2 class="text-2xl font-semibold">¿Qué es?</h2>
-            <p class="mt-2 text-base"> La Comisión de Equiparación de Oportunidades es el órgano oficial del Instituto Tecnológico de Costa Rica que se encarga de promover y garantizar la inclusión y la igualdad de oportunidades para las personas con discapacidad en la institución. </p>
-            
-            <h2 class="h2">Funcionalidades</h2>
-            <ul class="mt-2 list-disc list-outside pl-4">
-                <li>Velar por el cumplimiento de lo estipulado en la Ley de Igualdad de Oportunidades para las Personas con Discapacidad, Ley No. 7600 y su reglamento. Ingrese al siguiente enlace si desea saber 
-                    <a [routerLink]="['/leyes']" [routerLinkActive]="['active']" class="text-enlace" aria-label="Enlace que le redirige a la sección de normas"> más información sobre leyes.</a>
-                </li>
-                <li>Promover en la Comunidad Institucional el desarrollo de mayores niveles de sensibilización y concientización sobre los Derechos Humanos y la Discapacidad.</li>
-            </ul>
-            
-            <h2 class="h2">Servicios</h2>
-            <ul class="mt-2 ml-20 mr-20">
-                <li class="flex items-center">
-                    <img src="../../assets/servicios1.png" alt="Se muestra dos personas hablando. Una persona está sentada frente a un escritorio y la otra está en una silla de ruedas." 
-                        class="img-servicio">
-                    <p class="ml-4">Acompañamiento y asesoría psicoeducativa individual y grupal para estudiantes con necesidades educativas y en condición de discapacidad.</p>
-                </li>
-                <li class="mt-2 flex items-center">
-                    <img src="../../assets/servicios2.png" alt="Se muestra una persona en silla de ruedas frente a un escritorio." 
-                        class="img-servicio">
-                    <p class="ml-4">Gestión de ajustes y apoyos educativos para el aprendizaje según las necesidades de cada estudiante.</p>
-                </li>
-                <li class="mt-2 flex items-center">
-                    <img src="../../assets/servicios3.png" alt="Se muestra 4 manos levantadas." 
-                        class="img-servicio">
-                    <p class="ml-4">Gestión de acciones y articulación con otras instancias y programas que permitan la revisión, definición y actualización de acciones para el cumplimiento de los derechos de la población estudiantil con necesidades educativas y en condición de discapacidad.</p>
-                </li>
-                <li class="mt-2 flex items-center">
-                    <img src="../../assets/servicios4.png" alt="Se muestra una clase, hay un profesor señalando algo en un pizarra frente a un grupo de personas." 
-                        class="img-servicio">
-                    <p class="ml-4">Asesoría en el tema de apoyos educativos, discapacidad y necesidades educativas a docentes, estudiantes u otras instancias que lo requieran.</p>
-                </li>
-            </ul>
-            
-            <h2 class="h2">Integrantes</h2>
-            <p class="mt-2">La siguiente tabla contiene los datos de los integrantes de la comisión:</p>
-            <div class="mt-2 table-styled">
-                <table >
-                    <thead>
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Sede</th>
-                            <th>Correo electrónico</th>
-                            <th>Teléfono</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Paula Cubillo Segura</td>
-                            <td>Cartago</td>
-                            <td><a href="mailto:pcubillo&#64;tec.ac.cr">pcubillo&#64;tec.ac.cr</a></td>
-                            <td>2550 2784</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+            @for (titulo of getTitulosListasPuntos(); track titulo) {
+                <h2 class="text-xl md:text-2xl">{{titulo}}</h2>
+                <ul class="mt-2 list-disc list-outside pl-4 text-base md:text-lg">
+                    @for (item of listasPuntos[titulo]; track item.id) {
+                        <li>
+                            {{item.descripcion}}       
+                        </li>
+                    }
+                </ul>
+            }
 
+            @for (titulo of getTitulosListasImg(); track titulo) {
+                <h2 class="text-xl md:text-2xl">{{titulo}}</h2>
+                <ul class="mt-2 ml-20 mr-20">
+                    @for (item of listasImg[titulo]; track item.id) {
+                        <li class="mt-0 li-servicio">
+                            <img src="{{item.linkrecurso}}" alt="{{item.descripcionrecurso}}" class="img-servicio">
+                            <p class="text-servicio text-base md:text-lg">{{item.descripcion}}</p>
+                        </li>
+                    }
+                </ul>
+            }
 
-        </div>
-
-        <!-- Sección de Noticias -->
-        <div class="w-1/5">
-            <div class="bg-tec-title rounded-full">
-                <a href="https://www.tec.ac.cr/hoyeneltec/" target="_blank"
-                    aria-label="Enlace a página Hoy en el TEC (se abre en una pestaña nueva)">
-                    <h2 class="text-[18px] font-semibold text-center text-white p-[12px]">Noticias</h2>
-                </a>
-            </div>
-
-            <div class="div-noticia">
-                <img src="https://www.tec.ac.cr/hoyeneltec/sites/default/files/styles/node/public/media/img/main/017_ceremonia-graduacion-estudiantes-tec_24_11_2023_paquesada.jpg" 
-                    alt="Se muestra fotografía de estudiante graduada. Está frente a un podio, tiene una toga y un birrete puesto." class="rounded-tl-lg rounded-tr-lg">
-                <div class="p-3">
-                    <span class="span-date text-tec-title">27 de Noviembre 2023</span>
-                    <a href="https://www.tec.ac.cr/hoyeneltec/2023/11/27/siempre-van-existir-posibilidades-no-hay-limites" target="_blank"
-                        aria-label="Enlace a noticia 'Siempre van a existir las posibilidades y no hay límites' (se abre en una pestaña nueva)">
-                        <h3 class="h3-noticia">“Siempre van a existir las posibilidades y no hay límites"</h3>
-                    </a>
+            @for (q of infoTabla; track q.tipo) {
+                <h2 class="text-xl md:text-2xl">{{q.titulo}}</h2>
+                <p class="mt-2 text text-base md:text-lg">{{q.descripcion}}</p>
+                <div class="mt-2 table-styled text-base md:text-lg">
+                    <table >
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Sede</th>
+                                <th>Correo electrónico</th>
+                                <th>Teléfono</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (m of tabla; track m.id) {
+                                <tr>
+                                    <td>{{m.nombre}}</td>
+                                    <td>{{m.sede}}</td>
+                                    <td><a href="mailto:{{m.email}}" aria-label="Enlace lo redirige a su aplicación de email">{{m.email}}</a></td>
+                                    <td>{{m.telefono}}</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
                 </div>
-            </div>
+            }
 
-            <div class="div-noticia">
-                <img src="https://www.tec.ac.cr/hoyeneltec/sites/default/files/styles/node/public/media/img/main/access_2022_rgarita-16.jpg" 
-                    alt="Se muestran 5 personas con una vestimenta formal. Dos de ellos sostienen un bastón de orientación, y uno de ellos usa una silla de ruedas." class="rounded-tl-lg rounded-tr-lg">
-                <div class="p-3">
-                    <span class="span-date text-tec-title">02 de Noviembre 2022</span>
-                    <a href="https://www.tec.ac.cr/hoyeneltec/2022/11/02/expertos-internacionales-accesibilidad-inclusion-se-reunieron-costa-rica" target="_blank" class="block" 
-                        aria-label="Enlace a noticia 'Expertos internacionales en accesibilidad e inclusión se reunieron en Costa Rica' (se abre en una pestaña nueva)">
-                        <h3 class="h3-noticia">Expertos internacionales en accesibilidad e inclusión se reunieron en Costa Rica</h3>
-                    </a>    
-                </div>
-            </div>
             
-            <div class="div-noticia">
-                <img src="https://www.tec.ac.cr/hoyeneltec/sites/default/files/styles/node/public/media/img/main/infraestructura_sede_cartago_accesibilidad_acera_con_superficie_de_guia_3.jpg" 
-                    alt="Se muestra una fotografía de unas baldosas podotáctiles colocadas en la acera." class="rounded-tl-lg rounded-tr-lg">
-                <div class="p-3">
-                    <span class="span-date text-tec-title">20 de Julio 2022</span>
-                    <a href="https://www.tec.ac.cr/hoyeneltec/2022/07/20/tec-atiende-permanentemente-necesidades-educativas-especificas-personas-discapacidad" target="_blank" class="block" 
-                        aria-label="Enlace a noticia 'El TEC atiende permanentemente las necesidades educativas específicas de las personas con discapacidad' (se abre en una pestaña nueva)">
-                        <h3 class="h3-noticia">El TEC atiende permanentemente las necesidades educativas específicas de las personas con discapacidad</h3>
-                    </a>
-                </div>
-            </div>
-
+            
         </div>
     </div>
 </section>
