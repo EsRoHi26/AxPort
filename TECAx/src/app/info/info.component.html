@@ -57,8 +57,27 @@
                 </div>
             }
 
-            
-            
+        </div>
+        
+        <!-- Sección de Noticias -->
+        <div class="w-1/5">
+            <div class="bg-tec-title rounded-full">
+                <a href="https://www.tec.ac.cr/hoyeneltec/" target="_blank"
+                    aria-label="Enlace a página Hoy en el TEC (se abre en una pestaña nueva)">
+                    <h2 class="mt-0 text-base md:text-xl h2-noticia">Noticias</h2>
+                </a>
+            </div>
+            @for (q of noticias.slice(-3); track q.id) {
+                <div class="div-noticia">
+                    <img src="{{q.linkimagen}}" alt="{{q.descripcionimagen}}" class="img-noticia">
+                    <div class="p-3">
+                        <span class="span-date text-tec-title text-sm md:text-base">{{q.fecha}}</span>
+                        <a href="{{q.linknoticia}}" aria-label="Enlace a noticia (se abre en una pestaña nueva)" target="_blank">
+                            <h3 class="text-sm md:text-base">{{q.titulo}}</h3>
+                        </a>
+                    </div>
+                </div>
+            }
         </div>
     </div>
 </section>

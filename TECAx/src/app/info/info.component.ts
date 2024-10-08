@@ -11,12 +11,22 @@ interface Informacion {
   descripcionrecurso: string;
 };
 
-interface Miembros {
+interface Miembro {
   id: number;
   nombre: string;
   sede: string;
   email: string;
   telefono: string;
+};
+
+interface Noticia {
+  id: number;
+  fecha: string;
+  titulo: string;
+  linkimagen: string;
+  descripcionimagen: string;
+  linknoticia: string;
+  descripcionnoticia: string;
 };
 
 @Component({
@@ -34,9 +44,9 @@ export class InfoComponent {
   listaPunto: Informacion[] = [];
   listaImg: Informacion[] = [];
   infoTabla: Informacion[] = [];
-  tabla: Miembros[] = [];
+  tabla: Miembro[] = [];
 
-  noticias: Informacion[] = [];
+  noticias: Noticia[] = [];
   
 
   listasPuntos: { [titulo: string]: Informacion[] } = {};
@@ -60,7 +70,6 @@ export class InfoComponent {
         this.listaPunto = this.info.filter(q => q.tipo === 2);
         this.listaImg = this.info.filter(q => q.tipo === 3);
         this.infoTabla = this.info.filter(q => q.tipo === 4);
-        this.noticias = this.info.filter(q => q.tipo === 5);
 
         this.listaPunto.forEach(item => {
           if (!this.listasPuntos[item.titulo]) {
@@ -87,7 +96,20 @@ export class InfoComponent {
         .then(response => response.json())
         .then(data => {
           this.tabla = data;
-          console.log(this.tabla.map((tabla: Miembros) => tabla.sede));  
+          console.log(this.tabla.map((tabla: Miembro) => tabla.sede));  
+        });
+        
+      await fetch('http://localhost:8080/not/all', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+        .then(response => response.json())
+        .then(data => {
+          this.noticias = data;
+          console.log(data);
+          console.log(this.noticias.map((noticias: Noticia) => noticias.descripcionnoticia));  
         });
   }
 
