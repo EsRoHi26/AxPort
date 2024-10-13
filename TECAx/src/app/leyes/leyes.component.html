@@ -1,9 +1,12 @@
 
 <section>
-  @for (q of infoGeneral; track q.tipo) {
-    <h2 class="mt-0 text-xl md:text-2xl">{{q.titulo}}</h2>
-    <p class="text text-base md:text-lg">{{q.descripcion}}</p>
+  @for (titulo of getTitulosInfoGeneral(); track titulo) {
+    <h2 class="mt-0 text-xl md:text-2xl">{{titulo}}</h2>
+    @for (item of infoGeneral[titulo]; track item.id) {
+      <p class="text text-base md:text-lg">{{item.descripcion}} </p>
+    }
   }
+
   <div class="mt-4">
     <h2 class="text-xl md:text-2xl text-center">ENLACES DE INTERÉS</h2>
     <div class="mt-3 accordion" id="accordionEnlaces">

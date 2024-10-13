@@ -20,7 +20,10 @@ interface Informacion {
 
 export class LeyesComponent {
   info: Informacion[] = [];
-  infoGeneral: Informacion[] = [];
+  
+  general: Informacion[] = [];
+  infoGeneral: { [titulo: string]: Informacion[] } = {};
+  
   enlaces: Informacion[] = [];
 
   constructor() {}
@@ -35,9 +38,19 @@ export class LeyesComponent {
       .then(response => response.json())
       .then(data => {
         this.info = data;
-        this.infoGeneral = this.info.filter ((item: Informacion) => item.nombrerecurso === null );
+        this.general = this.info.filter ((item: Informacion) => item.nombrerecurso === null );
         this.enlaces = this.info.filter((item: Informacion) => item.nombrerecurso !== null && item.nombrerecurso !== '');
         console.log(this.info.map((info: Informacion) => info.titulo));
+
+        this.general.forEach(item => {
+          if (!this.infoGeneral[item.titulo]) {
+            this.infoGeneral[item.titulo] = [];
+          }
+          this.infoGeneral[item.titulo].push(item);
+        });
       });
+  }
+  getTitulosInfoGeneral(): string[] {
+    return Object.keys(this.infoGeneral);
   }
 }

@@ -26,7 +26,7 @@ INSERT INTO Informacion (tipo,titulo,descripcion) VALUES (4,'Integrantes','La si
 -- info de normas
 INSERT INTO Informacion (tipo,titulo,descripcion) VALUES (5,'Ley de Igualdad de Oportunidades para las Personas con Discapacidad, Ley No. 7600',
 'Como parte de los objetivos de la comisión está el velar por el cumplimiento de lo estipulado en la Ley de Igualdad de Oportunidades 
-para las Personas con Discapacidad, Ley No. 7600 y su reglamento.<br/>La Ley No. 7600 de Costa Rica, tiene como objetivo garantizar la igualdad de oportunidades
+para las Personas con Discapacidad, Ley No. 7600 y su reglamento.La Ley No. 7600 de Costa Rica, tiene como objetivo garantizar la igualdad de oportunidades
 y la no discriminación para las personas con discapacidad. La ley define discapacidad e incluye medidas para eliminar barreras arquitectónicas y de comunicación,
 asegurar el acceso a una educación inclusiva y promover la igualdad de oportunidades en el ámbito laboral. Además, establece la obligación de proporcionar
 servicios de apoyo y servicios médicos, psicológicos, educativos y de rehabilitación.');
