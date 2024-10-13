@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
 
 router.get('/all', async (req, res) => {
   try {
-      const result = await pool.query('SELECT * FROM informacion'); // Use the ID parameter in the query
+      const result = await pool.query('SELECT * FROM informacion WHERE tipo != $1', [5]);
       res.json(result.rows); // Send the results as JSON
   } catch (error) {
       console.error(error);

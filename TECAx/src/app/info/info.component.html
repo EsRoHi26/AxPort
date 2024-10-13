@@ -72,7 +72,7 @@
                     <img src="{{q.linkimagen}}" alt="{{q.descripcionimagen}}" class="img-noticia">
                     <div class="p-3">
                         <span class="span-date text-tec-title text-sm md:text-base">{{q.fecha}}</span>
-                        <a href="{{q.linknoticia}}" aria-label="Enlace a noticia (se abre en una pestaña nueva)" target="_blank">
+                        <a href="{{q.linknoticia}}" [attr.aria-label]= "q.descripcionnoticia" target="_blank">
                             <h3 class="text-sm md:text-base">{{q.titulo}}</h3>
                         </a>
                     </div>

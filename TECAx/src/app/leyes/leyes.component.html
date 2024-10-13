@@ -1,50 +1,41 @@
 
 <section>
-    <h2 class="mt-0 text-xl md:text-2xl">Ley de Igualdad de Oportunidades para las Personas con Discapacidad, Ley No. 7600</h2>
-    <p class="text text-base md:text-lg"> Como parte de los objetivos de la comisión está el velar por el cumplimiento de lo estipulado en la Ley de Igualdad de Oportunidades
-        para las Personas con Discapacidad, Ley No. 7600 y su reglamento.<br/>La Ley No. 7600 de Costa Rica, tiene como objetivo garantizar la igualdad de oportunidades
-        y la no discriminación para las personas con discapacidad. La ley define discapacidad e incluye medidas para eliminar barreras arquitectónicas y de comunicación,
-        asegurar el acceso a una educación inclusiva y promover la igualdad de oportunidades en el ámbito laboral. Además, establece la obligación de proporcionar
-        servicios de apoyo y servicios médicos, psicológicos, educativos y de rehabilitación. </p>
-    <div class="mt-4">
-        <h2 class="text-xl md:text-2xl text-center">ENLACES DE INTERÉS</h2>
-
-        <div class="mt-3 accordion" id="accordionEnlaces">
-            <div class="accordion-item">
-              <h3 class="accordion-header">
-                <button class="accordion-button collapsed text-base md:text-lg font-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                    Ley de Igualdad de Oportunidades para las Personas con Discapacidad
-                </button>
-              </h3>
-              <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionEnlaces">
-                <div class="accordion-body">
-                    <p class="text-base md:text-lg">La Ley No. 7600 de Costa Rica incluye disposiciones que garantizan la igualdad de oportunidades y la no discriminación para las
-                    personas con discapacidad en áreas como educación, empleo, salud, transporte y accesibilidad en general.
-                    Visite el siguiente link si desea saber más de la <a class="text-enlace" href="https://www.asamblea.go.cr/sd/SiteAssets/Lists/Consultas%20Biblioteca/EditForm/Ley%207600.pdf" target="_blank"
-                    aria-label="Enlace a documento pdf que especifica los artículos de la Ley 7600 (se abre en una pestaña nueva)">ley No. 7600.</a></p>
-                </div>
-              </div>
+  @for (q of infoGeneral; track q.tipo) {
+    <h2 class="mt-0 text-xl md:text-2xl">{{q.titulo}}</h2>
+    <p class="text text-base md:text-lg">{{q.descripcion}}</p>
+  }
+  <div class="mt-4">
+    <h2 class="text-xl md:text-2xl text-center">ENLACES DE INTERÉS</h2>
+    <div class="mt-3 accordion" id="accordionEnlaces">
+      @for (q of enlaces; track q.tipo) {
+        <div class="accordion-item">
+          <h3 class="accordion-header">
+            <button 
+              class="accordion-button collapsed text-base md:text-lg font-semibold" 
+              type="button" 
+              data-bs-toggle="collapse" 
+              [attr.data-bs-target]="'#collapse' + (enlaces.indexOf(q) + 1)"
+              aria-expanded="false" 
+              [attr.aria-controls]="'collapse' + (enlaces.indexOf(q) + 1)"> 
+              {{q.titulo}}
+            </button>
+          </h3>
+          <div 
+            [attr.id]="'collapse' + (enlaces.indexOf(q) + 1)"  
+            class="accordion-collapse collapse" 
+            data-bs-parent="#accordionEnlaces">
+            <div class="accordion-body">
+              <p class="text-base md:text-lg">
+                {{q.descripcion}} 
+                <a class="text-enlace" href="{{q.linkrecurso}}" target="_blank"
+                  [attr.aria-label]= "q.descripcionrecurso">
+                  {{q.nombrerecurso}}
+                </a>
+              </p>
             </div>
-
-            <div class="accordion-item">
-              <h3 class="accordion-header">
-                <button class="accordion-button collapsed text-base md:text-lg font-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    Reglamento de la Ley de Igualdad de Oportunidades para Personas con Discapacidad
-                </button>
-              </h3>
-              <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionEnlaces">
-                <div class="accordion-body">
-                    <p class="text-base md:text-lg">El Reglamento de la Ley N° 7600 establece directrices específicas para implementar las disposiciones de la ley,
-                        detallando cómo las instituciones deben garantizar la accesibilidad, igualdad de oportunidades y derechos para
-                        las personas con discapacidad en áreas como transporte, educación, salud y empleo.
-                        Visite el siguiente link si desea saber más del <a class="text-enlace" href="http://www.pgrweb.go.cr/scij/Busqueda/Normativa/Normas/nrm_texto_completo.aspx?param1=NRTC&nValor1=1&nValor2=53160&nValor3=91140&strTipM=TC" target="_blank"
-                        aria-label="Enlace a página del Sistema Costarricense de información Jurídica que explica el reglamento de la Ley 7600 (se abre en una pestaña nueva)">reglamento de la ley No. 7600.</a></p>
-                </div>
-              </div>
-            </div>
+          </div>
         </div>
-
+      }
     </div>
-
-
+  </div>
 </section>

@@ -19,6 +19,7 @@ const rutaRecursos = require('./endpoints/recursos')
 const rutaForm = require('./endpoints/form')
 const rutaMiembros = require('./endpoints/miembros')
 const rutaNoticias = require('./endpoints/noticias')
+const rutaNormas = require('./endpoints/normas')
 
 app.use(function (req, res, next) {
 
@@ -45,6 +46,7 @@ app.use('/rec', rutaRecursos );
 app.use('/form', rutaForm);
 app.use('/miem', rutaMiembros );
 app.use('/not', rutaNoticias );
+app.use('/normas', rutaNormas );
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
@@ -81,11 +83,11 @@ async function createTable() {
     CREATE TABLE IF NOT EXISTS Informacion (
       ID SERIAL PRIMARY KEY,
       tipo int,
-      titulo VARCHAR(25),
-      descripcion VARCHAR(300),
+      titulo VARCHAR(100),
+      descripcion VARCHAR(700),
       nombreRecurso VARCHAR (30),
-      linkRecurso VARCHAR (60),
-      descripcionRecurso VARCHAR (120)
+      linkRecurso VARCHAR (150),
+      descripcionRecurso VARCHAR (250)
     );
 
     CREATE TABLE IF NOT EXISTS Noticias (
