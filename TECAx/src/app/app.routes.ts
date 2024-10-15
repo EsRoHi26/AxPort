@@ -6,6 +6,7 @@ import { ProcessComponent } from './process/process.component';
 import { RecComponent } from './rec/rec.component';
 import { FormularioDenunciaComponent } from './formulario-denuncia/formulario-denuncia.component';
 import { FormularioSolicitudComponent } from './formulario-solicitud/formulario-solicitud.component';
+import { LoginComponent } from './login/login.component';
 
 export const routes: Routes = [
   {path: 'info', component: InfoComponent},
@@ -15,5 +16,6 @@ export const routes: Routes = [
   {path: 'rec', component: RecComponent},
   {path: 'formulario-denuncia', component: FormularioDenunciaComponent},
   {path: 'formulario-solicitud', component: FormularioSolicitudComponent},
+  {path: 'login', component: LoginComponent},
   {path: '', redirectTo: '/info', pathMatch: 'full'}
 ];
