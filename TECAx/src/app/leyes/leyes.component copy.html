@@ -1,0 +1,44 @@
+
+<section>
+  @for (titulo of getTitulosInfoGeneral(); track titulo) {
+    <h2 class="mt-0 text-xl md:text-2xl">{{titulo}}</h2>
+    @for (item of infoGeneral[titulo]; track item.id) {
+      <p class="text text-base md:text-lg">{{item.descripcion}} </p>
+    }
+  }
+
+  <div class="mt-4">
+    <h2 class="text-xl md:text-2xl text-center">ENLACES DE INTERÉS</h2>
+    <div class="mt-3 accordion" id="accordionEnlaces">
+      @for (q of enlaces; track q.tipo) {
+        <div class="accordion-item">
+          <h3 class="accordion-header">
+            <button 
+              class="accordion-button collapsed text-base md:text-lg font-semibold" 
+              type="button" 
+              data-bs-toggle="collapse" 
+              [attr.data-bs-target]="'#collapse' + (enlaces.indexOf(q) + 1)"
+              aria-expanded="false" 
+              [attr.aria-controls]="'collapse' + (enlaces.indexOf(q) + 1)"> 
+              {{q.titulo}}
+            </button>
+          </h3>
+          <div 
+            [attr.id]="'collapse' + (enlaces.indexOf(q) + 1)"  
+            class="accordion-collapse collapse" 
+            data-bs-parent="#accordionEnlaces">
+            <div class="accordion-body">
+              <p class="text-base md:text-lg">
+                {{q.descripcion}} 
+                <a class="text-enlace" href="{{q.linkrecurso}}" target="_blank"
+                  [attr.aria-label]= "q.descripcionrecurso">
+                  {{q.nombrerecurso}}
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

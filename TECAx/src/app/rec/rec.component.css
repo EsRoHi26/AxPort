@@ -2,5 +2,58 @@ h2{
   font-size: 20px;
   font-weight: bold;
   margin-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
+  color: #4d4d4d; 
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap; /* Permitir que los elementos se envuelvan a la siguiente fila */
+  gap: 26px; /* Espacio entre los cuadros */
+  justify-content: flex-start;
+}
+
+.card {
+  flex: 1 1 calc(20% - 26px); 
+  max-width: calc(20% - 26px);
+  margin-bottom: 4px; /* Espacio entre filas */
+}
+
+.card img {
+  height: 220px;
+  object-fit: contain;
+}
+
+.btn {
+  width: 100%;                /* Botón ocupa todo el ancho de la tarjeta */
+  margin-top: 8px;          /* Asegura que el botón se mueva al final */
+  padding: 10px;
+}
+
+@media (max-width: 1400px) {
+  .card {
+    flex: 1 1 calc(25% - 20px); /* 4 cards por fila */
+    max-width: calc(25% - 20px);
+  }
+}
+
+@media (max-width: 1150px) {
+  .card {
+    flex: 1 1 calc(33.33% - 20px); /* 3 cards por fila */
+    max-width: calc(33.33% - 20px);
+  }
+}
+
+@media (max-width: 890px) {
+  .card {
+    flex: 1 1 calc(50% - 20px); /* 2 cards por fila */
+    max-width: calc(50% - 20px);
+  }
+}
+
+@media (max-width: 670px) {
+  .card {
+    flex: 1 1 100%; /* 1 card por fila */
+    max-width: 100%;
+  }
 }
