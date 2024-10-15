@@ -1,0 +1,83 @@
+<section>
+    <div class="flex">        
+        <!-- Contenido principal -->
+        <div class="w-4/5 pr-8">
+            @for (q of infoGeneral; track q.tipo) {
+                <h2 class="mt-0 text-xl md:text-2xl">{{q.titulo}}</h2>
+                <p class="text text-base md:text-lg">{{q.descripcion}}</p>
+            }
+
+            @for (titulo of getTitulosListasPuntos(); track titulo) {
+                <h2 class="text-xl md:text-2xl">{{titulo}}</h2>
+                <ul class="mt-2 list-disc list-outside pl-4 text-base md:text-lg">
+                    @for (item of listasPuntos[titulo]; track item.id) {
+                        <li>
+                            {{item.descripcion}}       
+                        </li>
+                    }
+                </ul>
+            }
+
+            @for (titulo of getTitulosListasImg(); track titulo) {
+                <h2 class="text-xl md:text-2xl">{{titulo}}</h2>
+                <ul class="mt-2 ml-20 mr-20">
+                    @for (item of listasImg[titulo]; track item.id) {
+                        <li class="mt-0 li-servicio">
+                            <img src="{{item.linkrecurso}}" alt="{{item.descripcionrecurso}}" class="img-servicio">
+                            <p class="text-servicio text-base md:text-lg">{{item.descripcion}}</p>
+                        </li>
+                    }
+                </ul>
+            }
+
+            @for (q of infoTabla; track q.tipo) {
+                <h2 class="text-xl md:text-2xl">{{q.titulo}}</h2>
+                <p class="mt-2 text text-base md:text-lg">{{q.descripcion}}</p>
+                <div class="mt-2 table-styled text-base md:text-lg">
+                    <table >
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Sede</th>
+                                <th>Correo electrónico</th>
+                                <th>Teléfono</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (m of tabla; track m.id) {
+                                <tr>
+                                    <td>{{m.nombre}}</td>
+                                    <td>{{m.sede}}</td>
+                                    <td><a href="mailto:{{m.email}}" aria-label="Enlace lo redirige a su aplicación de email">{{m.email}}</a></td>
+                                    <td>{{m.telefono}}</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+
+        </div>
+        
+        <!-- Sección de Noticias -->
+        <div class="w-1/5">
+            <div class="bg-tec-title rounded-full">
+                <a href="https://www.tec.ac.cr/hoyeneltec/" target="_blank"
+                    aria-label="Enlace a página Hoy en el TEC (se abre en una pestaña nueva)">
+                    <h2 class="mt-0 text-base md:text-xl h2-noticia">Noticias</h2>
+                </a>
+            </div>
+            @for (q of noticias.slice(-3); track q.id) {
+                <div class="div-noticia">
+                    <img src="{{q.linkimagen}}" alt="{{q.descripcionimagen}}" class="img-noticia">
+                    <div class="p-3">
+                        <span class="span-date text-tec-title text-sm md:text-base">{{q.fecha}}</span>
+                        <a href="{{q.linknoticia}}" [attr.aria-label]= "q.descripcionnoticia" target="_blank">
+                            <h3 class="text-sm md:text-base">{{q.titulo}}</h3>
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

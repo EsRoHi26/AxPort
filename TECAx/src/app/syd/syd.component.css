@@ -34,6 +34,7 @@ ol li {
     counter-increment: item;
     margin: 10px 0;
     position: relative;
+    color: black;
 }
 
 ol li::before {
@@ -41,6 +42,7 @@ ol li::before {
     position: absolute;
     left: -20px;
     font-weight: bold;
+    color: #4d4d4d;
 }
 
 ol.letras {
@@ -60,4 +62,10 @@ ol.letras li::before {
     position: absolute;
     left: -20px;
     font-weight: bold;
+}
+
+
+.strong-color {
+    font-weight: 700;
+    color: #4d4d4d; 
 }

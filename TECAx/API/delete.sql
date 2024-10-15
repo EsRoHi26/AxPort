@@ -23,6 +23,26 @@ INSERT INTO Informacion (tipo,titulo,descripcion, nombreRecurso, linkRecurso, de
 
 INSERT INTO Informacion (tipo,titulo,descripcion) VALUES (4,'Integrantes','La siguiente tabla contiene los datos de los integrantes de la comisión:');
 
+-- info de normas
+INSERT INTO Informacion (tipo,titulo,descripcion) VALUES (5,'Ley de Igualdad de Oportunidades para las Personas con Discapacidad, Ley No. 7600',
+'Como parte de los objetivos de la comisión está el velar por el cumplimiento de lo estipulado en la Ley de Igualdad de Oportunidades 
+para las Personas con Discapacidad, Ley No. 7600 y su reglamento.La Ley No. 7600 de Costa Rica, tiene como objetivo garantizar la igualdad de oportunidades
+y la no discriminación para las personas con discapacidad. La ley define discapacidad e incluye medidas para eliminar barreras arquitectónicas y de comunicación,
+asegurar el acceso a una educación inclusiva y promover la igualdad de oportunidades en el ámbito laboral. Además, establece la obligación de proporcionar
+servicios de apoyo y servicios médicos, psicológicos, educativos y de rehabilitación.');
+INSERT INTO Informacion (tipo,titulo,descripcion, nombreRecurso, linkRecurso, descripcionRecurso) VALUES (5,'Reglamento de la Ley de Igualdad de Oportunidades para Personas con Discapacidad',
+'La Ley No. 7600 de Costa Rica incluye disposiciones que garantizan la igualdad de oportunidades y la no discriminación para las
+personas con discapacidad en áreas como educación, empleo, salud, transporte y accesibilidad en general.
+Visite el siguiente link si desea saber más de la ', 'ley No. 7600.', 'https://www.asamblea.go.cr/sd/SiteAssets/Lists/Consultas%20Biblioteca/EditForm/Ley%207600.pdf',
+'Enlace a documento pdf que especifica los artículos de la Ley 7600 (se abre en una pestaña nueva)');
+INSERT INTO Informacion (tipo,titulo,descripcion, nombreRecurso, linkRecurso, descripcionRecurso) VALUES (5,'Ley de Igualdad de Oportunidades para las Personas con Discapacidad',
+'El Reglamento de la Ley N° 7600 establece directrices específicas para implementar las disposiciones de la ley,
+detallando cómo las instituciones deben garantizar la accesibilidad, igualdad de oportunidades y derechos para
+las personas con discapacidad en áreas como transporte, educación, salud y empleo.
+Visite el siguiente link si desea saber más del ', 'reglamento de la ley No. 7600.', 'http://www.pgrweb.go.cr/scij/Busqueda/Normativa/Normas/nrm_texto_completo.aspx?param1=NRTC&nValor1=1&nValor2=53160&nValor3=91140&strTipM=TC',
+'Enlace a página del Sistema Costarricense de información Jurídica que explica el reglamento de la Ley 7600 (se abre en una pestaña nueva)');
+
+
 -- Insert into Noticias
 INSERT INTO Noticias (fecha,titulo,linkImagen, descripcionImagen,linkNoticia, descripcionNoticia) VALUES ('27 de Noviembre 2023',
 '“Siempre van a existir las posibilidades y no hay límites"', 'https://www.tec.ac.cr/hoyeneltec/sites/default/files/styles/node/public/media/img/main/017_ceremonia-graduacion-estudiantes-tec_24_11_2023_paquesada.jpg',
