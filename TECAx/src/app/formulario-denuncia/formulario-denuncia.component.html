@@ -5,7 +5,7 @@
 <form [formGroup]="formularioDenuncia" (ngSubmit)="onSubmit()">
     <fieldset>
         <legend>Datos Personales</legend>
-        <label for="rol">¿Usted es?</label>
+        <label for="rol">Tipo de usuario</label>
         <select name="rolDenunciante" formControlName="rol" id="rol">
             <option *ngFor="let rol of roles" [value]="rol">{{ rol }}</option>
         </select>
@@ -16,7 +16,7 @@
         </div>
 
 
-        <label for="nombre">Nombre</label>
+        <label for="nombre">Nombre completo</label>
         <input type="text" formControlName="nombre" name="nombre" id="nombre" required>
 
         <label for="correo">Correo</label>
