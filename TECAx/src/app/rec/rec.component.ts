@@ -6,6 +6,7 @@ interface Recurso {
   descripcion: string;
   imagen: string;
   url: string;
+  descripcionimagen: string;
   idfromulario: string;
 };
 

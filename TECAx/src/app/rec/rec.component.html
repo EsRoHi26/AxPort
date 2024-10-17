@@ -1,12 +1,37 @@
 <div class="flex">
-  @for (q of recursos; track q.id){
   <div class="card">
-    <img src="{{q.imagen}}" class="card-img-top mt-6" alt=" " />
+    <img src="../assets/CONAPDIS.png" class="card-img-top mt-6" alt="Logo del CONAPDIS" >
     <div class="card-body">
-      <h2 class="card-title">{{q.nombre}}</h2>
-      <p class="card-text">{{q.descripcion}}</p>
-      <a href="{{q.url}}" class="btn btn-primary" target="_blank">Ir a {{q.nombre}}</a>
+      <h2 class="card-title">CONAPDIS</h2>
+      <p class="card-text">El Conapdis es el rector en discapacidad, responsable de promover y 
+        fiscalizar el cumplimiento de los derechos humanos de la población con discapacidad, 
+        para fomentar su desarrollo inclusivo en todos los ámbitos de la sociedad.</p>
+      <a href="https://conapdis.go.cr" class="btn btn-primary" target="_blank" 
+      aria-label="Enlace que le redirige a la página de CONAPDIS (se abre en una pestaña nueva)">Ir a CONAPDIS</a>
     </div>
   </div>
-  }
+  
+  <div class="card">
+    <img src="../assets/WheelMap.png" class="card-img-top mt-6" alt="Logo de Wheelmap.org" >
+    <div class="card-body">
+      <h2 class="card-title">Wheelmap.org</h2>
+      <p class="card-text">Wheelmap es una plataforma en línea que permite a los usuarios encontrar 
+        y compartir información sobre la accesibilidad de lugares en todo el mundo.</p>
+      <a href="https://wheelmap.org" class="btn btn-primary" target="_blank"
+      aria-label="Enlace que le redirige a la página de Wheelmap.org (se abre en una pestaña nueva)">Ir a Wheelmap.org</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="../assets/18.png" class="card-img-top mt-6" alt="Imagen que muestra 4 cuadrados, 
+    3 de ellos con un cortorno gris, y el otro con un contorno azul, el que tiene contorno azul 
+    está en la esquina superior derecha y está en una posición diferente a los demás cuadrados." >
+    <div class="card-body">
+      <h2 class="card-title">Blog de Apps para Personas con Discapacidad</h2>
+      <p class="card-text">Blog que ofrece información sobre aplicaciones móviles y tecnología accesible para personas con discapacidad.</p>
+      <a href="https://gaptain.com/blog/18-herramientas-digitales-para-personas-con-discapacidad/" class="btn btn-primary" target="_blank"
+      aria-label="Enlace que le redirige a la página del Blog de Apps para Personas con Discapacidad (se abre en una pestaña nueva)">Ir a Blog de Apps para Personas con Discapacidad</a>
+    </div>
+  </div>
+
 </div>
