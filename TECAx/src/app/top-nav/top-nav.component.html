@@ -1,5 +1,17 @@
-<nav>
+<nav class="bg-tec-blue p-4">
+  <div class="logo">
+    <img src="../assets/Logo .png" alt="Logo del Tecnologico de Costa Rica" class="pl-3"/>
+  </div>
   <ul>
-    <li [routerLink]="['/login']" [routerLinkActive]="['active']">Login</li>
+    <li><a href="#">Administradores</a></li>
+    <li>
+      <a href="#">Contraste</a>
+      <ul>
+        <li><a href="#">Normal</a></li>
+        <li><a href="#">Invertido</a></li>
+        <li><a href="#">Oscuro</a></li>
+        <li><a href="#">De luz</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
