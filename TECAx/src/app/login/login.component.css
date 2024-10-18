@@ -1,13 +1,21 @@
+div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
 form {
   display: flex;
   flex-direction: column;
   max-width: 500px;
-  margin-left: 200px;
+  width: 100%;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 8px;
   background-color: #f9f9f9;
 }
+
 fieldset{
   display: flex;
   flex-direction: column;

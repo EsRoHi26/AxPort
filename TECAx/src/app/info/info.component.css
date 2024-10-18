@@ -139,7 +139,7 @@ h3{
         overflow-x: auto;    
         word-wrap: break-word; 
         overflow-wrap: break-word;
-    
+        word-break: normal;
     }
     .img-noticia {
         max-width: 100%;  

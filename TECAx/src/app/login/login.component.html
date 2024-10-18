@@ -1,23 +1,28 @@
-<h2 class="mb-3">Ingreso de Administrador</h2>
-<form [formGroup]="login" (ngSubmit)="onSubmit()">
-  <fieldset>
-    <legend>Inicio de Sesión</legend>
+<p class="mb-3 text-base md:text-lg">Esta sección está destinada exclusivamente para administradores autorizados. 
+  Para acceder, debe contar con las credenciales correspondientes y la autorización previa del sistema. 
+  Si no tiene los permisos adecuados, comuníquese con el administrador del sitio para solicitar acceso.</p>
+<div>
+  <form [formGroup]="login" (ngSubmit)="onSubmit()">
+    <fieldset>
+      <legend>Inicio de Sesión</legend>
+  
+      <label for="usuario">Usuario</label>
+      <input type="text" formControlName="usuario" name="usuario" id="usuario" placeholder="ejemplo@itcr.ac.cr">
+  
+      <div *ngIf="login.get('usuario')?.invalid && login.get('usuario')?.touched" role="alert" class="aviso">
+        Su usuario es inválido.
+      </div>
+  
+      <label for="contraseña">Contraseña</label>
+      <input type="password" formControlName="contraseña" name="contraseña" id="contraseña">
+  
+      <div *ngIf="login.get('contraseña')?.invalid && login.get('contraseña')?.touched" role="alert" class="aviso">
+        Su contraseña es inválida.
+      </div>
+  
+      <button type="submit" [disabled]="login.invalid">Ingresar</button>
+  
+    </fieldset>
+  </form>
 
-    <label for="usuario">Usuario</label>
-    <input type="text" formControlName="usuario" name="usuario" id="usuario" placeholder="ejemplo@itcr.ac.cr">
-
-    <div *ngIf="login.get('usuario')?.invalid && login.get('usuario')?.touched" role="alert" class="aviso">
-      Su usuario es inválido.
-    </div>
-
-    <label for="contraseña">Contraseña</label>
-    <input type="password" formControlName="contraseña" name="contraseña" id="contraseña">
-
-    <div *ngIf="login.get('contraseña')?.invalid && login.get('contraseña')?.touched" role="alert" class="aviso">
-      Su contraseña es inválida.
-    </div>
-
-    <button type="submit" [disabled]="login.invalid">Ingresar</button>
-
-  </fieldset>
-</form>
+</div>
