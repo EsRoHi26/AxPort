@@ -7,7 +7,11 @@
   </label>
   <input type="checkbox" id="btn">
   <ul>
+    @if(show()){
+    <li><a href="/info">LogOut</a></li>
+    }@else{
     <li><a href="/login">Administradores</a></li>
+    }
     <li>
       <label for="btn-1" class="show">Contraste</label>
       <a href="#">Contraste</a>
