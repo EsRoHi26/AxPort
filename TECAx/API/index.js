@@ -76,8 +76,7 @@ async function createTable() {
       descripcion VARCHAR(300),
       URL VARCHAR(100),
       imagen VARCHAR(100),
-      idFormulario SMALLINT,
-      FOREIGN KEY (idFormulario) REFERENCES Formularios(ID)
+      descripcionImagen VARCHAR (250)
     );
 
     CREATE TABLE IF NOT EXISTS Informacion (
@@ -96,8 +95,7 @@ async function createTable() {
       titulo VARCHAR(180),
       linkImagen VARCHAR (180),
       descripcionImagen VARCHAR(180),
-      linkNoticia VARCHAR (180),
-      descripcionNoticia VARCHAR (180)
+      linkNoticia VARCHAR (180)
     );
 
     CREATE TABLE IF NOT EXISTS Preguntas (

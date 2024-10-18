@@ -48,7 +48,7 @@
                                 <tr>
                                     <td>{{m.nombre}}</td>
                                     <td>{{m.sede}}</td>
-                                    <td><a href="mailto:{{m.email}}" aria-label="Enlace lo redirige a su aplicación de email">{{m.email}}</a></td>
+                                    <td><a href="mailto:{{m.email}}" [attr.aria-label]= "'Enlace que le redirige a su aplicación de email para enviarle un correo electrónico a ' + m.email" >{{m.email}}</a></td>
                                     <td>{{m.telefono}}</td>
                                 </tr>
                             }
@@ -72,7 +72,7 @@
                     <img src="{{q.linkimagen}}" alt="{{q.descripcionimagen}}" class="img-noticia">
                     <div class="p-3">
                         <span class="span-date text-tec-title text-sm md:text-base">{{q.fecha}}</span>
-                        <a href="{{q.linknoticia}}" [attr.aria-label]= "q.descripcionnoticia" target="_blank">
+                        <a href="{{q.linknoticia}}" [attr.aria-label]= "'Enlace que le redirige a la noticia ' + q.titulo + ' (se abre en una pestaña nueva)'" target="_blank">
                             <h3 class="text-sm md:text-base">{{q.titulo}}</h3>
                         </a>
                     </div>
