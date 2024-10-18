@@ -4,9 +4,25 @@ const pool = require('../db.js');
 
 router.post('/fr', async (req, res) => {
   const getDate = new Date();
-  try{
-    await pool.query('INSERT INTO FormulariosRecibidos (idUsuario, email, sede, fecha) VALUES ($1, $2, $3, $4)', [req.body.idUsuario, req.body.email, req.body.sede, getDate]);
-    res.status(201).json({ success: 'Formulario creado' });
+  try {
+    const result = await pool.query(
+      'INSERT INTO FormulariosRecibidos (idUsuario, email, sede, fecha) VALUES ($1, $2, $3, $4) RETURNING *',
+      [req.body.idUsuario, req.body.email, req.body.sede, getDate]
+    );
+    res.status(201).json(result.rows[0]);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+router.post('/fp', async (req, res) => {
+  try {
+    const result = await pool.query(
+      'INSERT INTO respuestas (respuesta, idpregunta, idformulariorec) VALUES ($1, $2, $3) RETURNING *',
+      [req.body.respuesta, req.body.idPregunta, req.body.idFormulario]
+    );
+    res.status(201).json(result.rows[0]);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Internal Server Error' });

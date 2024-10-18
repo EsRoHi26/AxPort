@@ -2,24 +2,24 @@ import { Injectable } from "@angular/core";
 
 @Injectable({providedIn: 'root'})
 export class SharedService {
-  public baseURL: string;
+  public static baseURL: string;
   public static logged: boolean;
 
   constructor() {
-    this.baseURL = 'http://your-api-url.com';
+    SharedService.baseURL = "http://localhost:8080";
     SharedService.logged = false;
   }
 
-  setBaseURL(url: string): void {
-    this.baseURL = url;
+  static setBaseURL(url: string): void {
+    SharedService.baseURL = url;
   }
 
   static setLogged(status: boolean): void {
-    this.logged = status;
+    SharedService.logged = status;
   }
 
-  getBaseURL(): string {
-    return this.baseURL;
+  static getBaseURL(): string {
+    return SharedService.baseURL;
   }
 
   static isLogged(): boolean {
