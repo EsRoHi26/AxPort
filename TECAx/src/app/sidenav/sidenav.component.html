@@ -5,5 +5,10 @@
     <li [routerLink]="['/syd']" [routerLinkActive]="['active']" >Solicitudes y Denuncias</li>
     <li [routerLink]="['/leyes']" [routerLinkActive]="['active']" >Normas</li>
     <li [routerLink]="['/rec']" [routerLinkActive]="['active']" >Recursos adicionales</li>
+    @if(show()){
+    <li [routerLink]="['/solPen']" [routerLinkActive]="['active']" >Solicitudes Pendientes</li>
+    <li [routerLink]="['/modRec']" [routerLinkActive]="['active']" >Modificar Recursos</li>
+    <li [routerLink]="['/modNot']" [routerLinkActive]="['active']" >Modificar Noticias</li>
+    }
   </ul>
 </nav>
