@@ -12,6 +12,9 @@ import {
 import {
     CommonModule
 } from '@angular/common';
+import {
+    EmailService
+} from '../email.service';
 @Component({
     selector: 'app-formulario-denuncia',
     standalone: true,
@@ -24,6 +27,39 @@ export class FormularioDenunciaComponent {
     roles: string[] = ['Estudiante', 'Funcionario', 'Visitante'];
     mensajeAlerta: string = '';
 
+    constructor(private emailService: EmailService) {
+        this.formularioDenuncia.get('rol')?.setValue('');
+        this.formularioDenuncia.get('sede')?.setValue('');
+        this.formularioDenuncia.get('rol')?.valueChanges.subscribe(value => {
+            if (value === 'Estudiante') {
+                this.formularioDenuncia.get('carrera')?.setValidators([Validators.required]);
+                this.formularioDenuncia.get('carne')?.setValidators([Validators.required, this.validarCarne]);
+
+                this.formularioDenuncia.get('dependencia')?.clearValidators();
+                this.formularioDenuncia.get('cedula')?.clearValidators();
+            } else if (value === 'Funcionario' || value === 'Visitante') {
+                this.formularioDenuncia.get('dependencia')?.setValidators([Validators.required]);
+                this.formularioDenuncia.get('cedula')?.setValidators([Validators.required, this.validarCedula]);
+
+                this.formularioDenuncia.get('carrera')?.clearValidators();
+                this.formularioDenuncia.get('carne')?.clearValidators();
+            } else {
+                this.formularioDenuncia.get('carrera')?.clearValidators();
+                this.formularioDenuncia.get('carne')?.clearValidators();
+                this.formularioDenuncia.get('dependencia')?.clearValidators();
+                this.formularioDenuncia.get('cedula')?.clearValidators();
+            }
+
+            // Actualizar la validez de los campos
+            this.formularioDenuncia.get('carrera')?.updateValueAndValidity();
+            this.formularioDenuncia.get('carne')?.updateValueAndValidity();
+            this.formularioDenuncia.get('dependencia')?.updateValueAndValidity();
+            this.formularioDenuncia.get('cedula')?.updateValueAndValidity();
+            this.formularioDenuncia.get('rol')?.valueChanges.subscribe(value => {
+                this.formularioDenuncia.updateValueAndValidity();
+            });
+        });
+    }
     formularioDenuncia = new FormGroup({
         'rol': new FormControl('', [Validators.required]),
         'nombre': new FormControl('', [Validators.required]),
@@ -32,7 +68,6 @@ export class FormularioDenunciaComponent {
         'correo': new FormControl('', [Validators.required, Validators.email]),
         'cedula': new FormControl(''),
         'carne': new FormControl(''),
-        'fecha': new FormControl('', [Validators.required, this.validarFecha]),
         'sede': new FormControl('', [Validators.required]),
         'si': new FormControl(false),
         'no': new FormControl(false),
@@ -50,7 +85,7 @@ export class FormularioDenunciaComponent {
         'caja': new FormControl(false),
         'seguros': new FormControl(false),
         'otroCheckbox': new FormControl(false),
-        'otroCasilla': new FormControl('', [this.validarOtro]),
+        'otroCasilla': new FormControl(''),
         'motivo': new FormControl(''),
         'descripcion': new FormControl('')
     }, {
@@ -116,102 +151,35 @@ export class FormularioDenunciaComponent {
         const otroTexto = formGroup.get('otroCasilla')?.value;
         const rol = formGroup.get('rol')?.value;
         if (rol === 'Funcionario') {
-            return CAIS || CISO || caja || seguros || otroCheckbox ? null : {
-                ningunaSeleccionada: true
-            };
+            if (otroCheckbox && otroTexto === '') {
+                return {
+                    textoRequerido: true
+                };
+            } else {
+                return CAIS || CISO || caja || seguros || otroCheckbox ? null : {
+                    ningunaSeleccionada: true
+                };
+            }
         } else return null;
-
-        /*
-        if (otroCheckbox && otroTexto === ''){
-            return { textoRequerido: true };
-        }else{return CAIS || CISO ||caja ||seguros ||otroCheckbox ? null : {
-            ningunaSeleccionada: true
-        };}*/
-
-
     }
-    validarOtro(control: AbstractControl): ValidationErrors | null {
-        const formGroup = control as FormGroup;
-        const otroCheckbox = formGroup.get('otroCheckbox')?.value;
-        const otroTexto = formGroup.get('otroCasilla')?.value;
-        if (otroCheckbox && otroTexto === '') {
-            return {
-                textoRequerido: true
-            };
-        } else {
-            return null
-        }
-
-
-    }
+    
     validarCedula(control: AbstractControl): ValidationErrors | null {
         const cedula = control.value;
-        if (!/^\d+$/.test(cedula)) { // Verifica si solo contiene números
+        if (!/^\d{9}$/.test(cedula)) { // Verifica si solo contiene números
             return {
                 invalidCedula: true
             };
         }
         return null;
     }
-    validarFecha(control: AbstractControl): ValidationErrors | null {
-        const fecha = control.value;
-
-        // Expresión regular para verificar el formato d/m/yyyy
-        const fechaRegex = /^(0?[1-9]|[12][0-9]|3[01])\/(0?[1-9]|1[0-2])\/(\d{4})$/;
-
-        if (!fechaRegex.test(fecha)) {
+    validarCarne(control: AbstractControl): ValidationErrors | null {
+        const carne = control.value;
+        if (!/^\d{10}$/.test(carne)) { // Verifica si solo contiene números
             return {
-                invalidFecha: true
+                invalidCedula: true
             };
         }
-
-
-        const [dia, mes, año] = fecha.split('/').map(Number);
-
-        // Verificar si la fecha es válida
-        const fechaObj = new Date(año, mes - 1, dia);
-        if (fechaObj.getFullYear() !== año || fechaObj.getMonth() !== (mes - 1) || fechaObj.getDate() !== dia) {
-            return {
-                invalidFecha: true
-            };
-        }
-
         return null;
-
-    }
-
-    constructor() {
-        this.formularioDenuncia.get('rol')?.setValue('');
-        this.formularioDenuncia.get('sede')?.setValue('');
-        this.formularioDenuncia.get('rol')?.valueChanges.subscribe(value => {
-            if (value === 'Estudiante') {
-                this.formularioDenuncia.get('carrera')?.setValidators([Validators.required]);
-                this.formularioDenuncia.get('carne')?.setValidators([Validators.required, this.validarCedula]);
-
-                this.formularioDenuncia.get('dependencia')?.clearValidators();
-                this.formularioDenuncia.get('cedula')?.clearValidators();
-            } else if (value === 'Funcionario' || value === 'Visitante') {
-                this.formularioDenuncia.get('dependencia')?.setValidators([Validators.required]);
-                this.formularioDenuncia.get('cedula')?.setValidators([Validators.required, this.validarCedula]);
-
-                this.formularioDenuncia.get('carrera')?.clearValidators();
-                this.formularioDenuncia.get('carne')?.clearValidators();
-            } else {
-                this.formularioDenuncia.get('carrera')?.clearValidators();
-                this.formularioDenuncia.get('carne')?.clearValidators();
-                this.formularioDenuncia.get('dependencia')?.clearValidators();
-                this.formularioDenuncia.get('cedula')?.clearValidators();
-            }
-
-            // Actualizar la validez de los campos
-            this.formularioDenuncia.get('carrera')?.updateValueAndValidity();
-            this.formularioDenuncia.get('carne')?.updateValueAndValidity();
-            this.formularioDenuncia.get('dependencia')?.updateValueAndValidity();
-            this.formularioDenuncia.get('cedula')?.updateValueAndValidity();
-            this.formularioDenuncia.get('rol')?.valueChanges.subscribe(value => {
-                this.formularioDenuncia.updateValueAndValidity();
-            });
-        });
     }
 
     onCheckboxChange(selected: string) {
@@ -221,6 +189,22 @@ export class FormularioDenunciaComponent {
             this.formularioDenuncia.get('si')?.setValue(false); // Desmarcar 'si'
         }
     }
+    
+    desmarcarAreas(): void {
+        const checkboxNames = ['ambiente', 'informacion', 'tecnologias', 'servicios', 'actitudinal'];
+    
+        checkboxNames.forEach(name => {
+          this.formularioDenuncia.get(name)?.valueChanges.subscribe(value => {
+            if (value) {
+              checkboxNames.forEach(otherName => {
+                if (otherName !== name) {
+                  this.formularioDenuncia.get(otherName)?.setValue(false, { emitEvent: false });
+                }
+              });
+            }
+          });
+        });
+      }
     onCheckboxChange2(selected: string) {
         if (selected === 'si') {
             this.formularioDenuncia.get('no2')?.setValue(false); // Desmarcar 'no'
@@ -235,14 +219,119 @@ export class FormularioDenunciaComponent {
             this.formularioDenuncia.get('si3')?.setValue(false); // Desmarcar 'si'
         }
     }
+    crearMensaje(datos: any): string {
+        /* Sección de datos personales */
+        const rol = datos['rol'];
+        let mensaje: string =
+            '<h1 style="font-size: 20px; margin-bottom: 5px; color: black;">Datos personales</h1>' +
+            '<span style="color: black;"><strong>Tipo:</strong> ' + datos['rol'] + '</span><br>' +
+            '<span style="color: black;"><strong>Fecha:</strong> ' + datos['fecha'] + '</span><br>' +
+            '<span style="color: black;"><strong>Nombre Completo:</strong> ' + datos['nombre'] + '</span><br>' +
+            '<span style="color: black;"><strong>Correo:</strong> ' + datos['correo'] + '</span><br>';
+
+        //Funcionario o visitante
+
+        if (rol === 'Funcionario' || rol === 'Visitante') {
+            mensaje += '<span style="color: black;"><strong>Dependencia:</strong> ' + datos['dependencia'] +
+                '</span><br>' +
+                '<span style="color: black;"><strong>Cédula:</strong> ' + datos['cedula'] + '</span><br>';
+        }
+
+        //Estudiante
+        if (rol === 'Estudiante') {
+            mensaje += '<span style="color: black;"><strong>Carrera:</strong> ' + datos['carrera'] + '</span><br>' +
+                '<span style="color: black;"><strong>Carné:</strong> ' + datos['carne'] + '</span><br>';
+        }
+
+        /* Sección de marque con X */
+        if (rol === 'Funcionario' || rol === 'Estudiante') {
+            mensaje +=
+            '<h1 style="font-size: 20px; margin-bottom: 5px; color: black;">Sección de marque con X</h1>';
+        }
+        //Estudiantes
+        if (rol === 'Estudiante') {
+            mensaje +=
+                '<span style="color: black;"><strong>Recibió servicios y apoyo del Programa de Admisión Accesible para estudiantes con Discapacidad y Necesidades Educativas (para recibir apoyos en el examen de admisión):</strong> ' +
+                datos['apoyo'] + '</span><br>' +
+                '<span style="color: black;"><strong>Forma parte del Programa de Servicios para estudiantes con Discapacidad y Necesidades Educativas (PSED):</strong> ' +
+                datos['formaParte'] + '</span><br>';
+        }
+        //Funcionarios
+        if (rol === 'Funcionario') {
+            mensaje +=
+                '<span style="color: black;"><strong>Recibió servicios y apoyo del Programa Institucional de Equiparación de Oportunidades para Personas con Discapacidad del ITCR:</strong> ' +
+                datos['apoyo'] + '</span><br>' +
+                '<strong style="color: black;">Ha recibido acompañamiento de (puede marcar varias opciones):</strong><br>';
+            if ('CAIS' in datos) {
+                mensaje += '<span style="color: black;">- ' + datos['CAIS'] + '</span><br>';
+            }
+            if ('CISO' in datos) {
+                mensaje += '<span style="color: black;">- ' + datos['CISO'] + '</span><br>';
+            }
+            if ('caja' in datos) {
+                mensaje += '<span style="color: black;">- ' + datos['caja'] + '</span><br>';
+            }
+            if ('seguros' in datos) {
+                mensaje += '<span style="color: black;">- ' + datos['seguros'] + '</span><br>';
+            }
+            if ('otro' in datos) {
+                mensaje += '<span style="color: black;">-<strong> Otro: </strong>' + datos['otro'] + '</span><br>';
+            }
+        }
+        /* Sección de denuncia */
+        mensaje += '<h1 style="font-size: 20px; margin-bottom: 5px; color: black;">Sección de denuncia</h1>' +
+            '<strong style="color: black;">Áreas por denunciar (según lo establece la ley 8661):</strong><br>';
+
+        if ('ambiente' in datos) {
+            mensaje += '<span style="color: black;">- ' + datos['ambiente'] + '</span><br>';
+        }
+        if ('informacion' in datos) {
+            mensaje += '<span style="color: black;">- ' + datos['informacion'] + '</span><br>';
+        }
+        if ('tecnologias' in datos) {
+            mensaje += '<span style="color: black;">- ' + datos['tecnologias'] + '</span><br>';
+        }
+        if ('servicios' in datos) {
+            mensaje += '<span style="color: black;">- ' + datos['servicios'] + '</span><br>';
+        }
+        if ('actitudinal' in datos) {
+            mensaje += '<span style="color: black;">- ' + datos['actitudinal'] + '</span><br>';
+        }
+
+        mensaje += '<span style="color: black;"><strong>Sede:</strong> ' + datos['sede'] + '</span><br>' +
+            '<span style="color: black;"><strong>Motivo de la denuncia:</strong> ' + datos['motivo'] +
+            '</span><br>' +
+            '<span style="color: black;"><strong>Descripción de los aspectos o situación por denunciar:</strong> ' +
+            datos['descripcion'] + '</span><br>';
+
+        return mensaje;
+
+
+    }
+    enviarCorreo(datos: any) {
+        const to = datos['correo'] + "," + "crowdspark58@gmail.com";
+        const subject = 'Denuncia realizada por ' + datos['nombre'];
+        const text = this.crearMensaje(datos);
+
+        this.emailService.sendEmail(to, subject, text).subscribe(
+            response => {
+                console.log('Correo enviado con éxito:', response);
+
+            },
+            error => {
+                console.error('Error al enviar el correo:', error);
+            }
+        );
+    }
     onSubmit() {
+
         if (this.formularioDenuncia.valid) {
-            const datosFormulario : Record<string, any> = {
+            const datosFormulario: Record < string, any > = {
                 rol: this.formularioDenuncia.get('rol')?.value, //¿Usted es?
                 correo: this.formularioDenuncia.get('correo')?.value,
                 nombre: this.formularioDenuncia.get('nombre')?.value,
                 dependencia: this.formularioDenuncia.get('dependencia')?.value,
-                fecha: this.formularioDenuncia.get('fecha')?.value,
+                fecha: new Date().toLocaleDateString('es-ES'),
                 sede: this.formularioDenuncia.get('sede')?.value,
                 motivo: this.formularioDenuncia.get('motivo')?.value, //Motivo de la denuncia
                 descripcion: this.formularioDenuncia.get('descripcion')
@@ -262,23 +351,23 @@ export class FormularioDenunciaComponent {
             }
 
             if (informacion) {
-                datosFormulario["informacion"] ="Información y Comunicación";
+                datosFormulario["informacion"] = "Información y Comunicación";
             }
 
             if (tecnologias) {
-                datosFormulario["tecnologias"] ="Tecnologías de apoyo a la discapacidad";
+                datosFormulario["tecnologias"] = "Tecnologías de apoyo a la discapacidad";
             }
 
             if (servicios) {
-                datosFormulario["servicios"] ="Servicios";
+                datosFormulario["servicios"] = "Servicios";
             }
 
             if (actitudinal) {
-                datosFormulario["actitudinal"] ="Actitudinal (actitudes y acciones de personas)";
+                datosFormulario["actitudinal"] = "Actitudinal (actitudes y acciones de personas)";
             }
-            
 
-             const rol = this.formularioDenuncia.get('rol')?.value;
+
+            const rol = this.formularioDenuncia.get('rol')?.value;
             const dependencia = this.formularioDenuncia.get('dependencia')?.value;
             const carrera = this.formularioDenuncia.get('carrera')?.value;
             const cedula = this.formularioDenuncia.get('cedula')?.value;
@@ -290,39 +379,39 @@ export class FormularioDenunciaComponent {
             if (rol === 'Estudiante') {
                 datosFormulario["carrera"] = carrera;
                 datosFormulario["carne"] = carne;
-            
+
                 /*Responde a Recibió servicios y apoyo del Programa de Admisión Accesible 
                 para estudiantes con Discapacidad y Necesidades Educativas (para recibir 
                 apoyos en el examen de admisión):
                 */
                 const si = this.formularioDenuncia.get('si')?.value;
-                if (si){
+                if (si) {
                     datosFormulario["apoyo"] = "Sí";
-                } else{
+                } else {
                     datosFormulario["apoyo"] = "No";
                 }
                 /*Responde a Forma parte del Programa de Servicios
                  para estudiantes con Discapacidad y Necesidades Educativas (PSED):
                 */
                 const si2 = this.formularioDenuncia.get('si2')?.value;
-                if (si2){
+                if (si2) {
                     datosFormulario["formaParte"] = "Sí";
-                } else{
+                } else {
                     datosFormulario["formaParte"] = "No";
                 }
             }
-            if (rol === 'Funcionario'){
+            if (rol === 'Funcionario') {
                 /*Responde a Forma parte del Programa de Servicios
                  para estudiantes con Discapacidad y Necesidades Educativas (PSED):
-                */  
+                */
                 const si3 = this.formularioDenuncia.get('si3')?.value;
-                 if (si3){
+                if (si3) {
                     datosFormulario["apoyo"] = "Sí";
-                } else{
+                } else {
                     datosFormulario["apoyo"] = "No";
                 }
 
-                /*Ha recibido acompañamiento de (puede marcar varias opciones):*/ 
+                /*Ha recibido acompañamiento de (puede marcar varias opciones):*/
                 const CAIS = this.formularioDenuncia.get('CAIS')?.value;
                 const CISO = this.formularioDenuncia.get('CISO')?.value;
                 const caja = this.formularioDenuncia.get('caja')?.value;
@@ -332,30 +421,29 @@ export class FormularioDenunciaComponent {
                 if (CAIS) {
                     datosFormulario["CAIS"] = "Clínica de Atención Integral en Salud (CAIS)";
                 }
-    
+
                 if (CISO) {
-                    datosFormulario["CISO"] ="Comisión Institucional de Salud Ocupacional (CISO)";
+                    datosFormulario["CISO"] = "Comisión Institucional de Salud Ocupacional (CISO)";
                 }
-    
+
                 if (caja) {
-                    datosFormulario["caja"] ="Caja Costarricense de Seguro Social";
+                    datosFormulario["caja"] = "Caja Costarricense de Seguro Social";
                 }
-    
+
                 if (seguros) {
-                    datosFormulario["seguros"] ="Instituto Nacional de Seguros";
+                    datosFormulario["seguros"] = "Instituto Nacional de Seguros";
                 }
-    
+
                 if (otroCheckbox) {
-                    datosFormulario["otro"] =otroCasilla;
+                    datosFormulario["otro"] = otroCasilla;
                 }
 
             }
-
             console.log('Datos del formulario:', JSON.stringify(datosFormulario, null, 2));
-           
-           
-            
-
+            this.enviarCorreo(datosFormulario);
+            alert('Formulario enviado.');
+        } else {
+            alert('Por favor, complete todos los campos correctamente antes de enviar el formulario.');
         }
     }
 }

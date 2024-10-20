@@ -3,7 +3,9 @@ import { ReactiveFormsModule, FormGroup, FormControl, Validators, AbstractContro
 import { CommonModule } from '@angular/common';
 import { SharedService } from '../../servicios/sharedService';
 import { app } from '../../../server';
-
+import {
+  EmailService
+} from '../email.service';
 interface ForRec {
   idUsuario: string;
   email: string;
@@ -43,17 +45,45 @@ export class FormularioSolicitudComponent {
 
   validarCedula(control: AbstractControl): ValidationErrors | null {
     const cedula = control.value;
-    if (!/^\d+$/.test(cedula)) { // Verifica si solo contiene números
-      return {
-        invalidCedula: true
-      };
+    if (!/^\d{9}$/.test(cedula)) { // Verifica si solo contiene números
+        return {
+            invalidCedula: true
+        };
     }
     return null;
-  }
-  constructor(public SharedService: SharedService) {
+}
+  constructor(public SharedService: SharedService,private emailService: EmailService) {
     this.formularioSolicitud.get('sede')?.setValue('');
   }
+  crearMensaje(datos: any): string {
+    let mensaje: string ='<h1 style="font-size: 20px; margin-bottom: 5px; color: black;">Datos de la solicitud</h1>' +
+    '<span style="color: black;"><strong>Nombre Completo:</strong> ' + datos['nombre'] + '</span><br>' +
+        '<span style="color: black;"><strong>Correo:</strong> ' + datos['correo'] + '</span><br>'+
+        '<span style="color: black;"><strong>Cédula:</strong> ' + datos['cedula'] + '</span><br>'+
+        '<span style="color: black;"><strong>Cuéntanos sobre el servicio o la ayuda que deseas recibir:</strong> ' + datos['servicio'] + '</span><br>'+
+        '<span style="color: black;"><strong>Indique los días y las horas en los que le sea más fácil asistir a la reunión:</strong> ' + datos['horario'] + '</span><br>'+
+        '<span style="color: black;"><strong>Sede:</strong> ' + datos['sede'] + '</span><br>';
 
+   
+    return mensaje;
+
+
+}
+  enviarCorreo(datos: any) {
+      const to = datos['correo'] + "," + "crowdspark58@gmail.com";
+      const subject = 'Solicitud de acompañamiento realizada por ' + datos['nombre'];
+      const text = this.crearMensaje(datos);
+
+      this.emailService.sendEmail(to, subject, text).subscribe(
+          response => {
+              console.log('Correo enviado con éxito:', response);
+
+          },
+          error => {
+              console.error('Error al enviar el correo:', error);
+          }
+      );
+  }
   async onSubmit() {
     if (this.formularioSolicitud.valid) {
       const formularioValores = this.formularioSolicitud.value;
@@ -61,6 +91,7 @@ export class FormularioSolicitudComponent {
 
       const jsonResultado = JSON.stringify(formularioValores);
       console.log('Formulario en formato JSON:', jsonResultado);
+
       /*
       El campo horario se refiere a la pregunta
       Indique los días y las horas en los que le sea más fácil asistir a la reunión.
@@ -68,6 +99,7 @@ export class FormularioSolicitudComponent {
       El campo servicio a la pregunta
       Cuéntanos sobre el servicio o la ayuda que deseas recibir.
       */
+
       const forRec: ForRec = {
         idUsuario: formularioValores.cedula!,
         email: formularioValores.correo!,
@@ -110,10 +142,12 @@ export class FormularioSolicitudComponent {
           }
 
         });
-
-
+        this.enviarCorreo(formularioValores);
+        alert('Formulario enviado.');
     } else {
       console.log('Formulario no válido');
+      alert('Por favor, complete todos los campos correctamente antes de enviar el formulario.');
+        
     }
 
   }
