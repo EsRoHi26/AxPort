@@ -120,7 +120,7 @@ export class FormularioSolicitudComponent {
       await fetch(SharedService.getBaseURL()+"/form/fr", {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json; charset=utf-8'
         },
         body: JSON.stringify(forRec)
       }).then(response => response.json())
