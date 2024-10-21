@@ -6,8 +6,8 @@ router.post('/fr', async (req, res) => {
   const getDate = new Date();
   try {
     const result = await pool.query(
-      'INSERT INTO FormulariosRecibidos (idUsuario, email, sede, fecha) VALUES ($1, $2, $3, $4) RETURNING *',
-      [req.body.idUsuario, req.body.email, req.body.sede, getDate]
+      'INSERT INTO FormulariosRecibidos (idUsuario, email, sede, fecha, resouestas) VALUES ($1, $2, $3, $4, $5) RETURNING *',
+      [req.body.idUsuario, req.body.email, req.body.sede, getDate, req.body.resouestas]
     );
     res.status(201).json(result.rows[0]);
   } catch (error) {
