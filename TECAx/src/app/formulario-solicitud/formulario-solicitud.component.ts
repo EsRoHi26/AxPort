@@ -3,14 +3,14 @@ import { ReactiveFormsModule, FormGroup, FormControl, Validators, AbstractContro
 import { CommonModule } from '@angular/common';
 import { SharedService } from '../../servicios/sharedService';
 import { app } from '../../../server';
-import {
-  EmailService
-} from '../email.service';
+import { EmailService } from '../email.service';
+
 interface ForRec {
   idUsuario: string;
   email: string;
   sede: string;
   fecha: string;
+  resouestas: string;
 }
 
 interface pregunta {
@@ -64,7 +64,7 @@ export class FormularioSolicitudComponent {
         '<span style="color: black;"><strong>Indique los días y las horas en los que le sea más fácil asistir a la reunión:</strong> ' + datos['horario'] + '</span><br>'+
         '<span style="color: black;"><strong>Sede:</strong> ' + datos['sede'] + '</span><br>';
 
-   
+
     return mensaje;
 
 
@@ -104,7 +104,8 @@ export class FormularioSolicitudComponent {
         idUsuario: formularioValores.cedula!,
         email: formularioValores.correo!,
         sede: formularioValores.sede!,
-        fecha: formularioValores.horario!
+        fecha: formularioValores.horario!,
+        resouestas: "Solicitud"
       };
 
       let preguntas: pregunta[] = [
@@ -132,7 +133,7 @@ export class FormularioSolicitudComponent {
             await fetch(SharedService.getBaseURL()+"/form/fp", {
               method: 'POST',
               headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json; charset=utf-8'
               },
               body: JSON.stringify(pregunta)
             }).then(response => response.json())
@@ -147,7 +148,7 @@ export class FormularioSolicitudComponent {
     } else {
       console.log('Formulario no válido');
       alert('Por favor, complete todos los campos correctamente antes de enviar el formulario.');
-        
+
     }
 
   }
