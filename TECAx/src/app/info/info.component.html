@@ -65,50 +65,24 @@
         </div>
 
         <!-- Sección de Noticias -->
-        <div class=" wn">
+        <div class="wn">
             <div class="bg-tec-title rounded-full">
                 <a href="https://www.tec.ac.cr/hoyeneltec/" target="_blank"
                     aria-label="Enlace a página Hoy en el TEC (se abre en una pestaña nueva)">
                     <h2 class="mt-0 text-base md:text-xl h2-noticia">Noticias</h2>
                 </a>
             </div>
-
-            <div class="div-noticia">
-                <img src="https://www.tec.ac.cr/hoyeneltec/sites/default/files/styles/node/public/media/img/main/017_ceremonia-graduacion-estudiantes-tec_24_11_2023_paquesada.jpg" 
-                    alt="Se muestra fotografía de estudiante graduada. Está frente a un podio, tiene una toga y un birrete puesto." class="img-noticia">
-                <div class="p-3">
-                    <span class="span-date text-tec-title text-sm md:text-base">27 de Noviembre 2023</span>
-                    <a href="https://www.tec.ac.cr/hoyeneltec/2023/11/27/siempre-van-existir-posibilidades-no-hay-limites" target="_blank"
-                        aria-label="Enlace a noticia 'Siempre van a existir las posibilidades y no hay límites' (se abre en una pestaña nueva)">
-                        <h3 class="text-sm md:text-base">“Siempre van a existir las posibilidades y no hay límites"</h3>
-                    </a>
+            @for (q of noticias.slice(-3); track q.id) {
+                <div class="div-noticia">
+                    <img src="{{q.linkimagen}}" alt="{{q.descripcionimagen}}" class="img-noticia">
+                    <div class="p-3">
+                        <span class="span-date text-tec-title text-sm md:text-base">{{q.fecha}}</span>
+                        <a href="{{q.linknoticia}}" [attr.aria-label]= "'Enlace que le redirige a la noticia ' + q.titulo + ' (se abre en una pestaña nueva)'" target="_blank">
+                            <h3 class="text-sm md:text-base">{{q.titulo}}</h3>
+                        </a>
+                    </div>
                 </div>
-            </div>
-
-            <div class="div-noticia">
-                <img src="https://www.tec.ac.cr/hoyeneltec/sites/default/files/styles/node/public/media/img/main/access_2022_rgarita-16.jpg" 
-                    alt="Se muestran 5 personas con una vestimenta formal. Dos de ellos sostienen un bastón de orientación, y uno de ellos usa una silla de ruedas." class="img-noticia">
-                <div class="p-3">
-                    <span class="span-date text-tec-title text-sm md:text-base">02 de Noviembre 2022</span>
-                    <a href="https://www.tec.ac.cr/hoyeneltec/2022/11/02/expertos-internacionales-accesibilidad-inclusion-se-reunieron-costa-rica" target="_blank" class="block" 
-                        aria-label="Enlace a noticia 'Expertos internacionales en accesibilidad e inclusión se reunieron en Costa Rica' (se abre en una pestaña nueva)">
-                        <h3 class="text-sm md:text-base">Expertos internacionales en accesibilidad e inclusión se reunieron en Costa Rica</h3>
-                    </a>    
-                </div>
-            </div>
-            
-            <div class="div-noticia">
-                <img src="https://www.tec.ac.cr/hoyeneltec/sites/default/files/styles/node/public/media/img/main/infraestructura_sede_cartago_accesibilidad_acera_con_superficie_de_guia_3.jpg" 
-                    alt="Se muestra una fotografía de unas baldosas podotáctiles colocadas en la acera." class="img-noticia">
-                <div class="p-3">
-                    <span class="span-date text-tec-title text-sm md:text-base">20 de Julio 2022</span>
-                    <a href="https://www.tec.ac.cr/hoyeneltec/2022/07/20/tec-atiende-permanentemente-necesidades-educativas-especificas-personas-discapacidad" target="_blank" class="block" 
-                        aria-label="Enlace a noticia 'El TEC atiende permanentemente las necesidades educativas específicas de las personas con discapacidad' (se abre en una pestaña nueva)">
-                        <h3 class="text-sm md:text-base">El TEC atiende permanentemente las necesidades educativas específicas de las personas con discapacidad</h3>
-                    </a>
-                </div>
-            </div>
-
+            }
         </div>
     </div>
 </section>
