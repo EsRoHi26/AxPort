@@ -7,5 +7,8 @@
     "start": "nodemon index.js"
   },
   "author": "Esteban",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "nodemailer": "^6.9.15"
+  }
 }
