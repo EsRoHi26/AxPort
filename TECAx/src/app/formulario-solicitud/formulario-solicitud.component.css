@@ -1,3 +1,19 @@
+span.requerido {
+    color: red;
+    font-size: 1.2em; 
+    margin-left: 2px; 
+  }
+  
+span.oculto {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  } 
 a {
     color: blue;
     font-weight: bold;
@@ -79,10 +95,9 @@ select {
 textarea.alto{
     height: 100px;
 }
-label {
-    padding-top: 10px;
+input, select {
+    margin-bottom: 5px;
 }
-
 button {
     margin-top: 20px;
     background-color: #007bff;

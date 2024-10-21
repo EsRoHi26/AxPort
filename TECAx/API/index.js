@@ -20,6 +20,8 @@ const rutaForm = require('./endpoints/form')
 const rutaMiembros = require('./endpoints/miembros')
 const rutaNoticias = require('./endpoints/noticias')
 const rutaNormas = require('./endpoints/normas')
+const rutaEmail = require('./endpoints/email');
+
 
 app.use(function (req, res, next) {
 
@@ -51,6 +53,7 @@ app.use('/normas', rutaNormas );
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
+app.use('/email', rutaEmail);
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
