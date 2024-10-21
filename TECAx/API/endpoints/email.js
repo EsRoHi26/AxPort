@@ -9,8 +9,8 @@ router.post('/send', async (req, res) => {
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: 'crowdspark58@gmail.com',
-            pass: 'tmlz kbon jrnp wzyo'
+            user: 'nonreplycomision@gmail.com',
+            pass: 'corx qacf zaaz ihhf'
         }
     });
 
