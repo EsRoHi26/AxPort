@@ -13,6 +13,18 @@ export class TopNavComponent {
 
   constructor(public SharedService: SharedService) {}
 
+  ngOnInit() {
+    const savedStyle = localStorage.getItem('bodyStyle');
+    if (savedStyle) {
+      document.body.className = savedStyle;
+    }
+  }
+
   show(){
     return SharedService.isLogged();};
+
+  changeStyle(style: string) {
+    document.body.className = style;
+    localStorage.setItem('bodyStyle', style);
+  }
 }

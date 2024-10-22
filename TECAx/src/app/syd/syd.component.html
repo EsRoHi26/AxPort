@@ -1,178 +1,180 @@
-<h2 class="mt-0 text-xl md:text-2xl">Procedimientos</h2>
-<p class="mt-2 text-base md:text-lg">A continuación, se presentan unos diagramas que resumen los procedimientos que se pueden llevar a cabo en la Comisión. 
-    Esta información se encuentra explicada de manera más detallada más abajo en esta misma sección.</p>
-<div class="mt-2 carousel">
-    <div class="slides" [ngStyle]="{'transform': 'translateX(' + (-activeSlide * 100) + '%)'}">
-      <div class="slide" *ngFor="let slide of slides">
-        <img [src]="slide.img" [alt]="slide.alt">
-      </div>
+<div class="syd">
+    <h2 class="mt-0 text-xl md:text-2xl">Procedimientos</h2>
+    <p class="mt-2 text-base md:text-lg">A continuación, se presentan unos diagramas que resumen los procedimientos que se pueden llevar a cabo en la Comisión. 
+        Esta información se encuentra explicada de manera más detallada más abajo en esta misma sección.</p>
+    <div class="mt-2 carousel">
+        <div class="slides" [ngStyle]="{'transform': 'translateX(' + (-activeSlide * 100) + '%)'}">
+          <div class="slide" *ngFor="let slide of slides">
+            <img [src]="slide.img" [alt]="slide.alt">
+          </div>
+        </div>
+      
+        <button (click)="nextSlide()">&gt;</button>
+        <button (click)="prevSlide()">&lt;</button>
     </div>
-  
-    <button (click)="nextSlide()">&gt;</button>
-    <button (click)="prevSlide()">&lt;</button>
+    <h2 class="text-xl md:text-2xl">Solicitudes</h2>
+    <p class="text-base md:text-lg">El proceso de solicitud se divide en las siguientes fases:</p>
+    <ol class="text-base md:text-lg ol-syd">
+        <li><strong class="strong-color">Contacto:</strong> La persona o instancia contacta de manera
+            escrita, vía electrónica o mediante oficio al
+            programa.</li>
+        <li><strong class="strong-color">Valoración:</strong> Un represente del programa se reúne con la
+            persona o instancia que solicita acompañamiento
+            para valorar la necesidad en accesibilidad y definir
+            el objetivo a alcanzar, las personas a las que va
+            dirigida la acción, los resultados esperados.</li>
+        <li><strong class="strong-color">Evaluación de solicitud:</strong> El programa evalúa y analiza la solicitud.</li>
+        <li><strong class="strong-color">Determinación de apoyo:</strong> El programa determina los apoyos internos y/o
+            externos que se requieren para la asesoría.</li>
+        <li><strong class="strong-color">Corrección de conducta:</strong> El programa establece sus recomendaciones por
+            escrito y se comunican o envían a la persona o
+            instancia solicitante.</li>
+        <li><strong class="strong-color">Seguimiento y/o apoyo:</strong> El programa da seguimiento o acompañamiento
+            según corresponda, sobre la ejecución de las
+            acciones.</li>
+        <li><strong class="strong-color">Registro:</strong> El programa genera un registro con toda la
+            información relacionada con la solicitud.</li>
+        <li><strong class="strong-color">Satisfacción:</strong> El programa solicita a la persona o instancia
+            correspondiente la evaluación sobre los servicios
+            brindados por el programa</li>
+    
+    </ol>
+    
+    <p class="text-base md:text-lg">Es importante que tenga en cuenta los siguientes plazos de respuesta:</p>
+    <ol class="text-base md:text-lg ol-syd">
+        <li>10 días hábiles
+            como máximo</li>
+        <li>Según
+            programación de
+            reuniones
+            mensuales</li>
+        <li>
+            Según la
+            necesidad de la
+            instancia</li>
+        <li>Según el
+            planeamiento
+            realizado</li>
+    </ol>
+    
+    
+    <h3 class="text-xl md:text-2xl">¿Cómo hacer una solicitud de acompañamiento?</h3>
+    <p class="text-base md:text-lg">Para iniciar el proceso debe reunirse con un representante de la comisión que valorará 
+        su solicitud y llenará la <a href="https://drive.google.com/file/d/1JbXG1Rj53L8EeCLCM85ZWHIiWVFboxPH/view?usp=sharing"  target="_blank"
+        aria-label="Enlace que le redirige a Google Drive al pdf de la ficha de solicitud (se abre en una pestaña nueva)">ficha de
+        solicitud</a> para poder analizar su caso.
+         Puede solicitar la reunión de las siguientes maneras:</p>
+    <ol class="text-base md:text-lg ol-syd">
+        <li>Completando el <a routerLink="/formulario-solicitud" aria-label="Enlace que le redirige al formulario de solicitud">formulario de solicitud</a>. Se le indicará la fecha por correo electrónico.</li>
+        <li>Vía correo electrónico.</li>
+        <li>En la oficiona de la comisión.</li>
+    </ol>
+    
+    <h2 class="text-xl md:text-2xl">Denuncias</h2>
+    <p class="text-base md:text-lg">El proceso de denuncia se divide en las siguientes fases:</p>
+    <ol class="text-base md:text-lg ol-syd">
+        <li><strong class="strong-color">Denuncia:</strong> El denunciante completa la
+            boleta de denuncia
+            correspondiente por
+            incumplimiento a normativa
+            en discapacidad y
+            accesibilidad.</li>
+        <li><strong class="strong-color">Estudio de la denuncia:</strong> La denuncia es estudiada
+            e investigada por el
+            Programa Institucional de
+            Equiparación de Oportunidades.
+    
+        </li>
+    
+        <li><strong class="strong-color">Remite:</strong> la denuncia será remitida en los siguientes casos:<ol class="letras">
+                <li>En caso de que la
+                    instancia denunciada sea el
+                    mismo programa por
+                    incumplimiento de sus
+                    funciones, la denuncia será
+                    remitida a la Rectoría.</li>
+                <li>En caso de que el denunciante sea funcionario y se considere
+                    necesario, se consulta con
+                    la Comisión Institucional de
+                    Salud Ocupacional (CISO),
+                    la Clínica de Atención en
+                    Salud Integral (CAIS) o el
+                    Departamento de Recursos
+                    Humanos.</li>
+                <li>En caso de que el denunciante sea estudiante y
+                    que la denuncia sea
+                    relacionada con el Programa
+                    de Admisión Accesible o el
+                    PSED deberá remitirse al
+                    Departamento de
+                    Orientación y Psicología
+                    para seguir el procedimiento
+                    establecido para estos
+                    casos.</li>
+            </ol>
+        </li>
+        <li><strong class="strong-color">Resolución:</strong> El Programa emite la
+            resolución correspondiente
+            en los plazos establecidos y
+            envía un oficio con la
+            resolución a las partes
+            involucradas.</li>
+    
+        <li><strong class="strong-color">Corrección de conducta:</strong> La instancia o persona
+            involucrada acata las
+            indicaciones y
+            recomendaciones
+            señaladas en la resolución
+            en los plazos establecidos.</li>
+        <li><strong class="strong-color">Sistema Jurídico:</strong> Si el
+            denunciante no está
+            conforme con la resolución, podrá acudir a las vías
+            legales del sistema jurídico
+            nacional.</li>
+    
+    </ol>
+    <p class="text-base md:text-lg">Es importante que tenga en cuenta los siguientes plazos de respuesta:</p>
+    <ol class="text-base md:text-lg ol-syd">
+        <li>Se brinda
+            respuesta
+            por parte
+            del
+            programa
+            en un plazo
+            de 10 días
+            hábiles.</li>
+        <li>El plazo de
+            la
+            aplicación
+            de la
+            recomenda
+            ción y
+            resolución
+            del
+            programa
+            se
+            establece
+            según el
+            caso.</li>
+    </ol>
+    <h3 class="text-xl md:text-2xl">¿Cómo hacer una denuncia?</h3>
+    <p class="text-base md:text-lg">Para hacer una denuncia, debe completar una ficha de denuncia que varía según si usted es estudiante, funcionario o
+        visitante.
+        Puede hacer llegar la ficha de denuncia a la comisión de dos maneras distintas:</p>
+    <ol class="text-base md:text-lg ol-syd">
+        <li>Llenar el <a routerLink="/formulario-denuncia" aria-label="Enlace que le redirige al formulario de denuncia">formulario de denuncia</a></li>
+        <li>Imprimir y entregar la ficha en la oficina. Para ello,
+            complete la ficha correspondiente:<ol class="letras">
+                <li><a href="https://drive.google.com/file/d/1iJRFj9JjJcsuGlT-Rde_u3VY2a_MbD59/view" target="_blank"
+                    aria-label="Enlace que le redirige a Google Drive a un pdf que explica el procedimiento para que un visitante interponga una denuncia 
+                    (se abre en una pestaña nueva)">Ficha de denuncia para visitantes</a></li>
+                <li><a href="https://drive.google.com/file/d/1mqsngYFrsXPjUJPiyE2b2LhYLw_w4O1C/view" target="_blank"
+                    aria-label="Enlace que le redirige a Google Drive a un pdf que explica el procedimiento para que un estudiante interponga una denuncia 
+                    (se abre en una pestaña nueva)">Ficha de denuncia para estudiantes</a></li>
+                <li><a href="https://drive.google.com/file/d/11Jh6trRhGd6CB1opwCi6uebnC-73dh49/view" target="_blank"
+                    aria-label="Enlace que le redirige a Google Drive a un pdf que explica el procedimiento para que un funcionario interponga una denuncia 
+                    (se abre en una pestaña nueva)">Ficha de denuncia para funcionarios</a></li>
+            </ol>
+        </li>
+    </ol>
 </div>
-<h2 class="text-xl md:text-2xl">Solicitudes</h2>
-<p class="text-base md:text-lg">El proceso de solicitud se divide en las siguientes fases:</p>
-<ol class="text-base md:text-lg">
-    <li><strong class="strong-color">Contacto:</strong> La persona o instancia contacta de manera
-        escrita, vía electrónica o mediante oficio al
-        programa.</li>
-    <li><strong class="strong-color">Valoración:</strong> Un represente del programa se reúne con la
-        persona o instancia que solicita acompañamiento
-        para valorar la necesidad en accesibilidad y definir
-        el objetivo a alcanzar, las personas a las que va
-        dirigida la acción, los resultados esperados.</li>
-    <li><strong class="strong-color">Evaluación de solicitud:</strong> El programa evalúa y analiza la solicitud.</li>
-    <li><strong class="strong-color">Determinación de apoyo:</strong> El programa determina los apoyos internos y/o
-        externos que se requieren para la asesoría.</li>
-    <li><strong class="strong-color">Corrección de conducta:</strong> El programa establece sus recomendaciones por
-        escrito y se comunican o envían a la persona o
-        instancia solicitante.</li>
-    <li><strong class="strong-color">Seguimiento y/o apoyo:</strong> El programa da seguimiento o acompañamiento
-        según corresponda, sobre la ejecución de las
-        acciones.</li>
-    <li><strong class="strong-color">Registro:</strong> El Programa genera un registro con toda la
-        información relacionada con la solicitud.</li>
-    <li><strong class="strong-color">Satisfacción:</strong> El Programa solicita a la persona o instancia
-        correspondiente la evaluación sobre los servicios
-        brindados por el programa</li>
-
-</ol>
-
-<p class="text-base md:text-lg">Es importante que tenga en cuenta los siguientes plazos de respuesta:</p>
-<ol class="text-base md:text-lg">
-    <li>10 días hábiles
-        como máximo</li>
-    <li>Según
-        programación de
-        reuniones
-        mensuales</li>
-    <li>
-        Según la
-        necesidad de la
-        instancia</li>
-    <li>Según el
-        planeamiento
-        realizado</li>
-</ol>
-
-
-<h3 class="text-xl md:text-2xl">¿Cómo hacer una solicitud de acompañamiento?</h3>
-<p class="text-base md:text-lg">Para iniciar el proceso debe reunirse con un representante de la comisión que valorará 
-    su solicitud y llenará la <a href="https://drive.google.com/file/d/1JbXG1Rj53L8EeCLCM85ZWHIiWVFboxPH/view?usp=sharing"  target="_blank"
-    aria-label="Enlace que le redirige a Google Drive al pdf de la ficha de solicitud (se abre en una pestaña nueva)">ficha de
-    solicitud</a> para poder analizar su caso.
-     Puede solicitar la reunión de las siguientes maneras:</p>
-<ol class="text-base md:text-lg">
-    <li>Completando el <a routerLink="/formulario-solicitud" aria-label="Enlace que le redirige al formulario de solicitud">formulario de solicitud</a>. Se le indicará la fecha por correo electrónico.</li>
-    <li>Vía correo electrónico.</li>
-    <li>En la oficiona de la comisión.</li>
-</ol>
-
-<h2 class="text-xl md:text-2xl">Denuncias</h2>
-<p class="text-base md:text-lg">El proceso de denuncia se divide en las siguientes fases:</p>
-<ol class="text-base md:text-lg">
-    <li><strong class="strong-color">Denuncia:</strong> El denunciante completa la
-        boleta de denuncia
-        correspondiente por
-        incumplimiento a normativa
-        en discapacidad y
-        accesibilidad.</li>
-    <li><strong class="strong-color">Estudio de la denuncia:</strong> La denuncia es estudiada
-        e investigada por el
-        Programa Institucional de
-        Equiparación de Oportunidades.
-
-    </li>
-
-    <li><strong class="strong-color">Remite:</strong> la denuncia será remitida en los siguientes casos:<ol class="letras">
-            <li>En caso de que la
-                instancia denunciada sea el
-                mismo programa por
-                incumplimiento de sus
-                funciones, la denuncia será
-                remitida a la Rectoría.</li>
-            <li>En caso de que el denunciante sea funcionario y se considere
-                necesario, se consulta con
-                la Comisión Institucional de
-                Salud Ocupacional (CISO),
-                la Clínica de Atención en
-                Salud Integral (CAIS) o el
-                Departamento de Recursos
-                Humanos.</li>
-            <li>En caso de que el denunciante sea estudiante y
-                que la denuncia sea
-                relacionada con el Programa
-                de Admisión Accesible o el
-                PSED deberá remitirse al
-                Departamento de
-                Orientación y Psicología
-                para seguir el procedimiento
-                establecido para estos
-                casos.</li>
-        </ol>
-    </li>
-    <li><strong class="strong-color">Resolución:</strong> El Programa emite la
-        resolución correspondiente
-        en los plazos establecidos y
-        envía un oficio con la
-        resolución a las partes
-        involucradas.</li>
-
-    <li><strong class="strong-color">Corrección de conducta:</strong> La instancia o persona
-        involucrada acata las
-        indicaciones y
-        recomendaciones
-        señaladas en la resolución
-        en los plazos establecidos.</li>
-    <li><strong class="strong-color">Sistema Jurídico:</strong> Si el
-        denunciante no está
-        conforme con la resolución, podrá acudir a las vías
-        legales del sistema jurídico
-        nacional.</li>
-
-</ol>
-<p class="text-base md:text-lg">Es importante que tenga en cuenta los siguientes plazos de respuesta:</p>
-<ol class="text-base md:text-lg">
-    <li>Se brinda
-        respuesta
-        por parte
-        del
-        programa
-        en un plazo
-        de 10 días
-        hábiles.</li>
-    <li>El plazo de
-        la
-        aplicación
-        de la
-        recomenda
-        ción y
-        resolución
-        del
-        programa
-        se
-        establece
-        según el
-        caso.</li>
-</ol>
-<h3 class="text-xl md:text-2xl">¿Cómo hacer una denuncia?</h3>
-<p class="text-base md:text-lg">Para hacer una denuncia, debe completar una ficha de denuncia que varía según si usted es estudiante, funcionario o
-    visitante.
-    Puede hacer llegar la ficha de denuncia a la comisión de dos maneras distintas:</p>
-<ol class="text-base md:text-lg">
-    <li>Llenar el <a routerLink="/formulario-denuncia" aria-label="Enlace que le redirige al formulario de denuncia">formulario de denuncia</a></li>
-    <li>Imprimir y entregar la ficha en la oficina. Para ello,
-        complete la ficha correspondiente:<ol class="letras">
-            <li><a href="https://drive.google.com/file/d/1iJRFj9JjJcsuGlT-Rde_u3VY2a_MbD59/view" target="_blank"
-                aria-label="Enlace que le redirige a Google Drive a un pdf que explica el procedimiento para que un visitante interponga una denuncia 
-                (se abre en una pestaña nueva)">Ficha de denuncia para visitantes</a></li>
-            <li><a href="https://drive.google.com/file/d/1mqsngYFrsXPjUJPiyE2b2LhYLw_w4O1C/view" target="_blank"
-                aria-label="Enlace que le redirige a Google Drive a un pdf que explica el procedimiento para que un estudiante interponga una denuncia 
-                (se abre en una pestaña nueva)">Ficha de denuncia para estudiantes</a></li>
-            <li><a href="https://drive.google.com/file/d/11Jh6trRhGd6CB1opwCi6uebnC-73dh49/view" target="_blank"
-                aria-label="Enlace que le redirige a Google Drive a un pdf que explica el procedimiento para que un funcionario interponga una denuncia 
-                (se abre en una pestaña nueva)">Ficha de denuncia para funcionarios</a></li>
-        </ol>
-    </li>
-</ol>

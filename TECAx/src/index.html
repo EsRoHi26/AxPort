@@ -9,8 +9,109 @@
   <link href="./output.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>      
+    /* Contraste Normal */
+    .normal {
+      background-color: white;
+      color: black;
+    }
+    /* Alto Contraste */
+    .high {
+      background-color: black;
+      color: white;
+    }
+    .high .titulo{
+      background-color: #111111;
+      color: white;
+    }
+    .high .side, .high header, .high header nav, .high header nav ul li a{
+      background-color: #111111;
+    }
+    .high header nav .h_options{
+      background-color: black;
+    }
+    .high .side ul li.active {
+      background-color: #FFD700;
+      color: black;
+      border-left-color: #FFD700;
+    }
+    .high header nav {
+      background: black;
+      color: white;
+      border-bottom: 2px solid #FFD700;
+    }
+    .high header nav ul ul {
+      background-color:  black;
+      border: 1px solid #FFD700;
+    }
+    .high header nav ul ul li:hover{
+      background: #111111;
+      border-left-color: #FFD700;
+    }
+    .high img{
+      filter: brightness(100%) contrast(100%);
+      background-color: #111111;
+    }
+
+    /*Seccion info*/
+    .high .w h2, .high .wn h2, .high h2 {
+      color: rgb(0, 195, 255)
+    }
+    .high .w a, .high .wn a{
+      color: #FFD700;
+    }
+    .high .w a:hover, .high .wn a:hover{
+      color: #c8ff00;
+    }
+    .high .w table{
+      background-color: #111111;
+      color: white;
+    }
+    .high .wn div{
+      background: #111111;
+    }
+    .high .wn span{
+      color: white;
+    }
+    @media all and (max-width: 700px){
+      .high header nav ul{
+        background-color: black;
+      }
+      .high header nav ul li{
+        background-color: #111111;
+      }
+      .high header .icon{
+        color: #FFD700;
+      }
+    }
+
+    /*Seccion syd*/
+    .high .syd h2, .high .syd h3, .high .syd .ol-syd li strong, .high .syd .ol-syd li::before{
+      color: rgb(0, 195, 255)
+    }
+    .high .syd .ol-syd li{
+      color: white;
+    }
+    .high .syd a, .high .syd .ol-syd a{
+      color: #FFD700;
+    }
+    .high .syd a:hover, .high .syd .ol-syd a:hover{
+      color: #c8ff00;
+    }
+    .high .syd .carousel button{
+      background-color: #303030;
+    }
+    .high .syd .carousel button:hover{
+      background-color: black
+    }
+
+    /*Seccion normativa*/
+
+
+
+  </style>
 </head>
-<body>
+<body class="normal">
   <app-root></app-root>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>

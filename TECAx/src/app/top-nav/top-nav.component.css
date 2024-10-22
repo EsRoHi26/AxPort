@@ -18,6 +18,9 @@ nav ul{
 nav ul li{
     display: inline-block;
     margin: 0 5px;
+}
+
+.h_options {
     background: #002855;
 }
 
@@ -75,6 +78,8 @@ nav ul ul li{
 
 nav .logo{
     float: left;
+    margin-top: 10px;
+    max-width: 200px;
 }
 
 .show,.icon, input {
