@@ -541,7 +541,7 @@ export class FormularioDenunciaComponent {
         };
 
       console.log('Datos del formulario:', JSON.stringify(datosFormulario, null, 2));
-      //this.enviarCorreo(datosFormulario);
+      this.enviarCorreo(datosFormulario);
       await fetch(SharedService.getBaseURL()+"/form/fr", {
         method: 'POST',
         headers: {

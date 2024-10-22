@@ -1,3 +1,4 @@
+
 <div class="form-style">
     <h2 class="mt-0 text-xl md:text-2xl">Formulario de solicitudes</h2>
     <p class="mt-2 mb-4 text-base md:text-lg">Este formulario sirve para solicitar una reunión con un representante de la comisión
@@ -30,6 +31,16 @@
 
             <label for="horario">Indique los días y las horas en los que le sea más fácil asistir a la reunión:<span class="requerido" aria-hidden="true">*</span></label>
             <textarea class="alto" formControlName="horario" name="infoHorario" id="horario" required></textarea>
+
+        <label for="sede">Seleccione la sede<span class="requerido" aria-hidden="true">*</span></label>
+        <select name="sedeTEc" formControlName="sede" id="sede" required>
+            <option *ngFor="let sedes of sedesTec" [value]="sedes">{{ sedes }}</option>
+        </select>
+
+
+        <button type="submit">Enviar</button>
+    </fieldset>
+</form>
 
             <label for="sede">Seleccione la sede<span class="requerido" aria-hidden="true">*</span></label>
             <select name="sedeTEc" formControlName="sede" id="sede" required>
