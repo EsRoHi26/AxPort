@@ -1,5 +1,7 @@
-<h2 class="mt-0 text-xl md:text-2xl">Solicitudes</h2>
-<div class="carousel">
+<h2 class="mt-0 text-xl md:text-2xl">Procedimientos</h2>
+<p class="mt-2 text-base md:text-lg">A continuación, se presentan unos diagramas que resumen los procedimientos que se pueden llevar a cabo en la Comisión. 
+    Esta información se encuentra explicada de manera más detallada más abajo en esta misma sección.</p>
+<div class="mt-2 carousel">
     <div class="slides" [ngStyle]="{'transform': 'translateX(' + (-activeSlide * 100) + '%)'}">
       <div class="slide" *ngFor="let slide of slides">
         <img [src]="slide.img" [alt]="slide.alt">
@@ -8,9 +10,9 @@
   
     <button (click)="nextSlide()">&gt;</button>
     <button (click)="prevSlide()">&lt;</button>
-  </div>
-<h2 class="mt-0 text-xl md:text-2xl">Solicitud de acompañamiento</h2>
-<p class="text-base md:text-lg">El proceso de denuncia se divide en las siguientes fases:</p>
+</div>
+<h2 class="text-xl md:text-2xl">Solicitudes</h2>
+<p class="text-base md:text-lg">El proceso de solicitud se divide en las siguientes fases:</p>
 <ol class="text-base md:text-lg">
     <li><strong class="strong-color">Contacto:</strong> La persona o instancia contacta de manera
         escrita, vía electrónica o mediante oficio al
@@ -57,7 +59,7 @@
 
 <h3 class="text-xl md:text-2xl">¿Cómo hacer una solicitud de acompañamiento?</h3>
 <p class="text-base md:text-lg">Para iniciar el proceso debe reunirse con un representante de la comisión que valorará 
-    su solicitud y llenará la <a href="https://drive.google.com/file/d/1JbXG1Rj53L8EeCLCM85ZWHIiWVFboxPH/view?usp=sharing"
+    su solicitud y llenará la <a href="https://drive.google.com/file/d/1JbXG1Rj53L8EeCLCM85ZWHIiWVFboxPH/view?usp=sharing"  target="_blank"
     aria-label="Enlace que le redirige a Google Drive al pdf de la ficha de solicitud (se abre en una pestaña nueva)">ficha de
     solicitud</a> para poder analizar su caso.
      Puede solicitar la reunión de las siguientes maneras:</p>

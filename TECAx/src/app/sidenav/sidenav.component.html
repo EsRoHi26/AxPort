@@ -1,9 +1,8 @@
 <nav>
   <ul>
     <li [routerLink]="['/info']" [routerLinkActive]="['active']" >Información</li>
-    <li [routerLink]="['/process']" [routerLinkActive]="['active']" >Procesos</li>
     <li [routerLink]="['/syd']" [routerLinkActive]="['active']" >Solicitudes y Denuncias</li>
-    <li [routerLink]="['/leyes']" [routerLinkActive]="['active']" >Normas</li>
+    <li [routerLink]="['/leyes']" [routerLinkActive]="['active']" >Normativa</li>
     <li [routerLink]="['/rec']" [routerLinkActive]="['active']" >Recursos adicionales</li>
     @if(show()){
     <li [routerLink]="['/solPen']" [routerLinkActive]="['active']" >Solicitudes Pendientes</li>
