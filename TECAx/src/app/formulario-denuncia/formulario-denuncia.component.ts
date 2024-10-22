@@ -10,7 +10,7 @@ import {
 import { CommonModule } from '@angular/common';
 import { EmailService } from '../email.service';
 import { SharedService } from '../../servicios/sharedService';
-
+import { Router } from '@angular/router';
 interface ForRec {
   idUsuario: string;
   email: string;
@@ -38,7 +38,7 @@ export class FormularioDenunciaComponent {
   roles: string[] = ['Estudiante', 'Funcionario', 'Visitante'];
   mensajeAlerta: string = '';
 
-  constructor(private emailService: EmailService, public SharedService: SharedService) {
+  constructor(private emailService: EmailService, public SharedService: SharedService,private router: Router) {
     this.formularioDenuncia.get('rol')?.setValue('');
     this.formularioDenuncia.get('sede')?.setValue('');
     this.formularioDenuncia.get('rol')?.valueChanges.subscribe(value => {
@@ -320,7 +320,7 @@ export class FormularioDenunciaComponent {
 
   }
   enviarCorreo(datos: any) {
-    const to = datos['correo'] + "," + "crowdspark58@gmail.com";
+    const to = datos['correo'] + "," + "nonreplycomision@gmail.com";
     const subject = 'Denuncia realizada por ' + datos['nombre'];
     const text = this.crearMensaje(datos);
 
@@ -567,6 +567,8 @@ export class FormularioDenunciaComponent {
           }
 
         });
+        this.formularioDenuncia.reset()
+        this.router.navigate(['/syd']);
       alert('Formulario enviado.');
     } else {
       alert('Por favor, complete todos los campos correctamente antes de enviar el formulario.');

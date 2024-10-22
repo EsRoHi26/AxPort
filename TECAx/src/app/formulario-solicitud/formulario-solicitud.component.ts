@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { SharedService } from '../../servicios/sharedService';
 import { app } from '../../../server';
 import { EmailService } from '../email.service';
-
+import { Router } from '@angular/router';
 interface ForRec {
   idUsuario: string;
   email: string;
@@ -52,7 +52,7 @@ export class FormularioSolicitudComponent {
     }
     return null;
 }
-  constructor(public SharedService: SharedService,private emailService: EmailService) {
+  constructor(public SharedService: SharedService,private emailService: EmailService,private router: Router) {
     this.formularioSolicitud.get('sede')?.setValue('');
   }
   crearMensaje(datos: any): string {
@@ -70,7 +70,7 @@ export class FormularioSolicitudComponent {
 
 }
   enviarCorreo(datos: any) {
-      const to = datos['correo'] + "," + "crowdspark58@gmail.com";
+      const to = datos['correo'] + "," + "nonreplycomision@gmail.com";
       const subject = 'Solicitud de acompañamiento realizada por ' + datos['nombre'];
       const text = this.crearMensaje(datos);
 
@@ -144,6 +144,8 @@ export class FormularioSolicitudComponent {
 
         });
         this.enviarCorreo(formularioValores);
+        this.formularioSolicitud.reset()
+        this.router.navigate(['/syd']);
         alert('Formulario enviado.');
     } else {
       console.log('Formulario no válido');

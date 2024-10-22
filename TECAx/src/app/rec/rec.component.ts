@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { SharedService } from '../../servicios/sharedService';
-
+import { CommonModule } from '@angular/common';
 interface Recurso {
   id: number;
   nombre: string;
@@ -9,12 +9,13 @@ interface Recurso {
   url: string;
   descripcionimagen: string;
   idfromulario: string;
+  tipo: string;
 };
 
 @Component({
   selector: 'app-rec',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './rec.component.html',
   styleUrl: './rec.component.css'
 })
@@ -34,6 +35,7 @@ export class RecComponent {
     .then(data => {
       this.recursos = data;
       console.log(this.recursos.map((rec:Recurso) => rec.nombre));
+      console.log(this.recursos)
     });
   }
 
