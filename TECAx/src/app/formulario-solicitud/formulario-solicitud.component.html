@@ -6,7 +6,7 @@
 <form [formGroup]="formularioSolicitud" (ngSubmit)="onSubmit()">
     <fieldset>
         <legend>Solicitar reunión</legend>
-        
+
         <label for="nombre">Nombre completo<span class="requerido" aria-hidden="true">*</span></label>
         <input type="text" formControlName="nombre" name="nombre" id="nombre" required>
 
@@ -34,8 +34,8 @@
         <select name="sedeTEc" formControlName="sede" id="sede" required>
             <option *ngFor="let sedes of sedesTec" [value]="sedes">{{ sedes }}</option>
         </select>
-        
-        
+
+
         <button type="submit">Enviar</button>
     </fieldset>
 </form>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SharedService } from '../../servicios/sharedService';
 
 interface Recurso {
   id: number;
@@ -19,12 +20,12 @@ interface Recurso {
 })
 export class RecComponent {
 
-  constructor() {}
+  constructor(public SharedService:SharedService) {}
 
   recursos:Recurso[] = [];
 
   async ngOnInit() {
-    await fetch('http://localhost:8080/rec/all',{
+    await fetch(SharedService.baseURL+'/rec/all',{
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'

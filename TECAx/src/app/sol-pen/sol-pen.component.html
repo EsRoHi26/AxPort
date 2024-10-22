@@ -1,1 +1,40 @@
-<p>sol-pen works!</p>
+<h2>Solicitudes</h2>
+<div>
+  @for (d of solicitudesPendientes; track d.id){
+  <div class="card">
+    <div class="card-body">
+      <h3 class="card-title">Denuncia {{d.id}}</h3>
+      <p class="card-text">email: {{d.correo}}</p>
+      <p class="card-text">fecha: {{d.fecha}}</p>
+      <p class="card-text">cedula: {{d.cedula}}</p>
+      <p class="card-text">sede: {{d.sede}}</p>
+      <hr>
+      @for (p of d.form; track p.pregunta){
+      <p class="card-text">{{p.pregunta}}: {{p.respuesta}}</p>
+      }
+      <button class="btn btn-danger" (click)="borrar(d.id.toString())">Borrar</button>
+    </div>
+  </div>
+  }
+</div>
+<h2>Denuncias</h2>
+<div>
+  @for (d of denunciasPendientes; track d.id){
+  <div class="card">
+    <div class="card-body">
+      <h3 class="card-title">Denuncia {{d.id}}</h3>
+      <p class="card-text">email: {{d.correo}}</p>
+      <p class="card-text">fecha: {{d.fecha}}</p>
+      <p class="card-text">cedula: {{d.cedula}}</p>
+      <p class="card-text">sede: {{d.sede}}</p>
+      <hr>
+      @for (p of d.form; track p.pregunta){
+      <p class="card-text">{{p.pregunta}}: {{p.respuesta}}</p>
+      }
+      <button class="btn btn-danger" (click)="borrar(d.id.toString())">Borrar</button>
+    </div>
+  </div>
+  }
+</div>
+
+
