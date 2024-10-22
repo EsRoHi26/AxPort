@@ -1,41 +1,43 @@
-<h2>Formulario de solicitudes</h2>
-<p>Este formulario sirve para solicitar una reunión con un representante de la comisión
-    para que este pueda evaluar su caso, proponer una solución y, en última instancia,
-    brindarle el apoyo y los servicios acordados. Se le hará llegar la información
-    pertinente a la reunión mediante correo electrónico.</p>
-<form [formGroup]="formularioSolicitud" (ngSubmit)="onSubmit()">
-    <fieldset>
-        <legend>Solicitar reunión</legend>
-        
-        <label for="nombre">Nombre completo<span class="requerido" aria-hidden="true">*</span></label>
-        <input type="text" formControlName="nombre" name="nombre" id="nombre" required>
+<div class="form-syd">
+    <h2 class="mt-0 text-xl md:text-2xl">Formulario de solicitudes</h2>
+    <p class="mt-2 mb-4 text-base md:text-lg">Este formulario sirve para solicitar una reunión con un representante de la comisión
+        para que este pueda evaluar su caso, proponer una solución y, en última instancia,
+        brindarle el apoyo y los servicios acordados. Se le hará llegar la información
+        pertinente a la reunión mediante correo electrónico.</p>
+    <form [formGroup]="formularioSolicitud" (ngSubmit)="onSubmit()">
+        <fieldset>
+            <legend>Solicitar reunión</legend>
+            
+            <label for="nombre">Nombre completo<span class="requerido" aria-hidden="true">*</span></label>
+            <input type="text" formControlName="nombre" name="nombre" id="nombre" required>
 
-        <label for="correo">Correo<span class="requerido" aria-hidden="true">*</span></label>
-        <input type="email" formControlName="correo" name="correo" id="correo" required>
-        <div *ngIf="formularioSolicitud.get('correo')?.invalid && formularioSolicitud.get('correo')?.touched" role="alert" class="aviso">
-                Su correo electrónico es inválido.
-        </div>
+            <label for="correo">Correo<span class="requerido" aria-hidden="true">*</span></label>
+            <input type="email" formControlName="correo" name="correo" id="correo" required>
+            <div *ngIf="formularioSolicitud.get('correo')?.invalid && formularioSolicitud.get('correo')?.touched" role="alert" class="aviso">
+                    Su correo electrónico es inválido.
+            </div>
 
 
-        <label for="cédula">Cédula<span class="requerido" aria-hidden="true">*</span></label>
-        <input type="text" formControlName="cedula" name="cedula" id="cédula" required>
+            <label for="cédula">Cédula<span class="requerido" aria-hidden="true">*</span></label>
+            <input type="text" formControlName="cedula" name="cedula" id="cédula" required>
 
-        <div *ngIf="formularioSolicitud.get('cedula')?.invalid && formularioSolicitud.get('cedula')?.touched" role="alert" class="aviso">
-            La cédula debe tener exactamente 9 dígitos y solo números.
-        </div>
+            <div *ngIf="formularioSolicitud.get('cedula')?.invalid && formularioSolicitud.get('cedula')?.touched" role="alert" class="aviso">
+                La cédula debe tener exactamente 9 dígitos y solo números.
+            </div>
 
-        <label for="servicio">Cuéntanos sobre el servicio o la ayuda que deseas recibir<span class="requerido" aria-hidden="true">*</span></label>
-        <textarea class="alto" formControlName="servicio" name="infoServicio" id="servicio" required></textarea>
+            <label for="servicio">Cuéntanos sobre el servicio o la ayuda que deseas recibir<span class="requerido" aria-hidden="true">*</span></label>
+            <textarea class="alto" formControlName="servicio" name="infoServicio" id="servicio" required></textarea>
 
-        <label for="horario">Indique los días y las horas en los que le sea más fácil asistir a la reunión:<span class="requerido" aria-hidden="true">*</span></label>
-        <textarea class="alto" formControlName="horario" name="infoHorario" id="horario" required></textarea>
+            <label for="horario">Indique los días y las horas en los que le sea más fácil asistir a la reunión:<span class="requerido" aria-hidden="true">*</span></label>
+            <textarea class="alto" formControlName="horario" name="infoHorario" id="horario" required></textarea>
 
-        <label for="sede">Seleccione la sede<span class="requerido" aria-hidden="true">*</span></label>
-        <select name="sedeTEc" formControlName="sede" id="sede" required>
-            <option *ngFor="let sedes of sedesTec" [value]="sedes">{{ sedes }}</option>
-        </select>
-        
-        
-        <button type="submit">Enviar</button>
-    </fieldset>
-</form>
+            <label for="sede">Seleccione la sede<span class="requerido" aria-hidden="true">*</span></label>
+            <select name="sedeTEc" formControlName="sede" id="sede" required>
+                <option *ngFor="let sedes of sedesTec" [value]="sedes">{{ sedes }}</option>
+            </select>
+            
+            
+            <button type="submit">Enviar</button>
+        </fieldset>
+    </form>    
+</div>
