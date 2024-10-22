@@ -23,8 +23,10 @@ export class TopNavComponent {
   show(){
     return SharedService.isLogged();};
 
-  changeStyle(style: string) {
+  changeStyle(style: string, event: Event) {
+    event.preventDefault(); // Previene el comportamiento predeterminado del enlace
     document.body.className = style;
     localStorage.setItem('bodyStyle', style);
   }
+  
 }
