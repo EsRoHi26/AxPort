@@ -31,6 +31,9 @@ export class SolPenComponent {
   denunciasPendientes: Solicitud[] = [];
 
   async ngOnInit() {
+    this.solicitudesPendientes = [];
+    this.denunciasPendientes = [];
+
     try {
       await fetch(SharedService.baseURL + '/form/solicitud', {
         method: 'GET',
@@ -39,28 +42,32 @@ export class SolPenComponent {
         }
       }).then(response => response.json())
         .then(data => {
-          const temp: Solicitud = {
-            id: data[0].id,
-            correo: data[0].email,
-            cedula: data[0].idusuario,
-            sede: data[0].sede,
-            fecha: data[0].fecha,
-            form: []
-          };
-          data.map((den: any) => {
-            if (temp.id == den.id) {
-              temp.form.push({ pregunta: den.pregunta, respuesta: den.respuesta });
+          data.forEach((den: any) => {
+            let temp: Solicitud = {
+              id: -1,
+              correo: "",
+              cedula: "",
+              sede: "",
+              fecha: "",
+              form: []
+            };
+            console.log("den: ", JSON.stringify(den));
+            if (this.solicitudesPendientes[this.solicitudesPendientes.length - 1] && this.solicitudesPendientes[this.solicitudesPendientes.length - 1].id == den.id) {
+              this.solicitudesPendientes[this.solicitudesPendientes.length - 1].form.push({ pregunta: den.pregunta, respuesta: den.respuesta });
             }
             else {
-              this.solicitudesPendientes.push(temp);
               temp.id = den.id;
-              temp.correo = den.correo;
-              temp.cedula = den.cedula;
+              temp.correo = den.email;
+              temp.cedula = den.idusuario;
               temp.sede = den.sede;
               temp.fecha = den.fecha;
+              temp.form.push({ pregunta: den.pregunta, respuesta: den.respuesta });
+              console.log("temp: ", JSON.stringify(temp));
+              this.solicitudesPendientes.push(temp);
             }
           });
-          this.solicitudesPendientes.push(temp);
+          //console.log("temp: ", JSON.stringify(temp));
+          //this.solicitudesPendientes.push(temp);
           console.log(this.solicitudesPendientes.map((den: any) => den));
         });
     } catch (e) {
@@ -75,28 +82,30 @@ export class SolPenComponent {
         }
       }).then(response => response.json())
         .then(data => {
-          const temp: Solicitud = {
-            id: data[0].id,
-            correo: data[0].email,
-            cedula: data[0].idusuario,
-            sede: data[0].sede,
-            fecha: data[0].fecha,
-            form: []
-          };
-          data.map((den: any) => {
-            if (temp.id == den.id) {
-              temp.form.push({ pregunta: den.pregunta, respuesta: den.respuesta });
+          data.forEach((den: any) => {
+            let temp: Solicitud = {
+              id: -1,
+              correo: "",
+              cedula: "",
+              sede: "",
+              fecha: "",
+              form: []
+            };
+            console.log("den: ", JSON.stringify(den));
+            if (this.denunciasPendientes[this.denunciasPendientes.length - 1] && this.denunciasPendientes[this.denunciasPendientes.length - 1].id == den.id) {
+              this.denunciasPendientes[this.denunciasPendientes.length - 1].form.push({ pregunta: den.pregunta, respuesta: den.respuesta });
             }
             else {
-              this.denunciasPendientes.push(temp);
               temp.id = den.id;
-              temp.correo = den.correo;
-              temp.cedula = den.cedula;
+              temp.correo = den.email;
+              temp.cedula = den.idusuario;
               temp.sede = den.sede;
               temp.fecha = den.fecha;
+              temp.form.push({ pregunta: den.pregunta, respuesta: den.respuesta });
+              console.log("temp: ", JSON.stringify(temp));
+              this.denunciasPendientes.push(temp);
             }
           });
-          this.denunciasPendientes.push(temp);
           console.log(this.denunciasPendientes.map((den: any) => den));
         });
     } catch (e) {
