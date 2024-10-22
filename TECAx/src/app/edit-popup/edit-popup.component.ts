@@ -16,6 +16,12 @@ export class EditPopupComponent {
 
   show() {
     this.visible = true;
+    setTimeout(() => {
+      const nombreInput = document.getElementById('titulo') as HTMLInputElement;
+      if (nombreInput) {
+        nombreInput.focus();
+      }
+    }, 0);
   }
 
   hide() {

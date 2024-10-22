@@ -1,0 +1,30 @@
+<div *ngIf="visible" class="popup" role="dialog" aria-labelledby="popupTitle" aria-modal="true">
+    <div class="popup-content" tabindex="-1">
+        <h2 id="popupTitle">Agregar Recurso</h2>
+
+        <label for="nombre">Nombre:</label>
+        <input type="text" [(ngModel)]="recurso.nombre" id="nombre" #nombreInput required />
+
+        <label for="descripcion">Descripción:</label>
+        <input type="text" [(ngModel)]="recurso.descripcion" id="descripcion" required />
+
+        <label for="url">URL:</label>
+        <input type="text" [(ngModel)]="recurso.url" id="url" required />
+
+        <label for="urlimagen">URL de Imagen:</label>
+        <input type="text" [(ngModel)]="recurso.imagen" id="imagen" required />
+
+        <label for="descripcionimage">Descripción de Imagen:</label>
+        <input type="text" [(ngModel)]="recurso.descripcionimagen" id="descripcionimagen" required />
+
+        <label for="tipo">Tipo:</label>
+        <select [(ngModel)]="recurso.tipo" id="tipo" required>
+            <option value="" disabled selected>Seleccione un tipo</option>
+            <option value="Internos">Internos</option>
+            <option value="Externos">Externos</option>
+        </select>
+
+        <button class="guardar-button" (click)="submit()">Agregar</button>
+        <button (click)="hide()">Cancelar</button>
+    </div>
+</div>

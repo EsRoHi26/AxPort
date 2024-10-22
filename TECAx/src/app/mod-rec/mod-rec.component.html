@@ -1,1 +1,43 @@
-<p>mod-rec works!</p>
+<div *ngIf="!recursos">Cargando datos...</div>
+<div class="table-container" *ngIf="recursos">
+    
+    <div class="page-info"><strong>Recursos</strong><button aria-haspopup="dialog" aria-controls="popup"  aria-label="Agregar recurso" class="button add" (click)="agregarRecurso()">
+      <i class="fas fa-plus"></i>
+  </button></div>
+    <table>
+        <thead>
+          <tr>
+            
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Tipo</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let recurso of recursosPaginados">
+            <td>{{ recurso.nombre }}</td>
+            <td>{{ recurso.descripcion }}</td>
+            <td>{{ recurso.tipo }}</td>
+            <td>
+            <button aria-haspopup="dialog" aria-controls="popup"  aria-label="Modificar recurso" class="button modify" (click)="modificarRecurso(recurso,recurso.id)" aria-hidden="false" >
+                <i class="fas fa-edit"></i>
+              </button>
+            <button aria-haspopup="dialog" aria-controls="popup"  aria-label="Eliminar recurso" class="button delete" (click)="eliminarRecurso(recurso.id)">
+                <i class="fas fa-trash-alt"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+    </table>
+
+    <div class="page-info">Página {{ paginaActual }} de {{ totalPaginas }}</div>
+</div>
+
+<div class="pagination">
+    <button class="button back" (click)="cambiarPagina(paginaActual - 1)" [disabled]="paginaActual === 1">Anterior</button>
+    <button class="button next" (click)="cambiarPagina(paginaActual + 1)" [disabled]="paginaActual * recursosPorPagina >= recursos.length">Siguiente</button>
+</div>
+<app-add-recurso></app-add-recurso>
+<app-confirm-popup></app-confirm-popup>
+<app-edit-recurso></app-edit-recurso>

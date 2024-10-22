@@ -1,7 +1,7 @@
 <div *ngIf="!noticias">Cargando datos...</div>
 <div class="table-container" *ngIf="noticias">
     
-    <div class="page-info"><strong>Noticias</strong><button class="button add" (click)="agregarNoticia()">
+    <div class="page-info"><strong>Noticias</strong><button aria-haspopup="dialog" aria-controls="popup"  aria-label="Agregar Noticia" class="button add" (click)="agregarNoticia()">
       <i class="fas fa-plus"></i>
   </button></div>
     <table>
@@ -18,10 +18,10 @@
             <td>{{ noticia.titulo }}</td>
             <td>{{ noticia.fecha }}</td>
             <td>
-            <button class="button modify" (click)="modificarNoticia(noticia,noticia.id)">
+            <button aria-haspopup="dialog" aria-controls="popup" aria-label="Modificar noticia" class="button modify" (click)="modificarNoticia(noticia,noticia.id)">
                 <i class="fas fa-edit"></i>
               </button>
-            <button class="button delete" (click)="eliminarNoticia(noticia.id)">
+            <button aria-haspopup="dialog" aria-controls="popup" aria-label="Eliminar noticia"class="button delete" (click)="eliminarNoticia(noticia.id)">
                 <i class="fas fa-trash-alt"></i>
               </button>
             </td>

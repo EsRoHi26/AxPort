@@ -1,6 +1,6 @@
-<div *ngIf="visible" class="popup">
-    <div class="popup-content">
-      <h2>Modificar Noticia</h2>
+<div *ngIf="visible" class="popup"role="dialog" aria-labelledby="popupTitle" aria-modal="true">
+    <div class="popup-content"   tabindex="-1">
+      <h2 id="popupTitle">Modificar Noticia</h2>
       <label for="titulo">Título:</label>
       <input type="text" [(ngModel)]="noticia.titulo" id="titulo" required />
   

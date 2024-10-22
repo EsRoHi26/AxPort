@@ -21,6 +21,12 @@ export class AddPopupComponent {
   @Output() updateEvent = new EventEmitter<any>();  // Emite los datos actualizados
   show() {
     this.visible = true;
+    setTimeout(() => {
+      const nombreInput = document.getElementById('titulo') as HTMLInputElement;
+      if (nombreInput) {
+        nombreInput.focus();
+      }
+    }, 0);
   }
   // Función para ocultar el pop-up
   hide() {

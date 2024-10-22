@@ -1,9 +1,8 @@
-<div *ngIf="visible" class="popup">
-    <div class="popup-content">
-      <h2>{{ title }}</h2>
-      <p>{{ content }}</p>
+<div *ngIf="visible" class="popup"role="dialog" aria-labelledby="popupTitle" aria-modal="true">    <div class="popup-content" tabindex="-1">
+      <h2  id="popupTitle">{{ title }}</h2>
+      <p id="primero">{{ content }}</p>
       <button class="accept" (click)="confirm()">Confirmar</button>
-      <button class="cancel" (click)="cancel()">Cancelar</button>
+      <button id="no" class="cancel" (click)="cancel()" #no>Cancelar</button>
     </div>
   </div>
   

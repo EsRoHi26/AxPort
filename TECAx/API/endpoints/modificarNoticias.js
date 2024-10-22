@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const pool = require('../db.js'); // Asegúrate de importar tu pool correctamente
+const pool = require('../db.js'); 
 
 // Método para eliminar una noticia por ID
 router.delete('/:id', async (req, res) => {
