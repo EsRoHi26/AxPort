@@ -3,7 +3,8 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 1200px;
+    max-width: 1200px;
+    width: 100%;
     padding: 20px;
     background-color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
