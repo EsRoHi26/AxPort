@@ -1,7 +1,9 @@
 <div *ngIf="!noticias">Cargando datos...</div>
 <div class="table-container" *ngIf="noticias">
     
-    <div class="page-info"><strong>Noticias</strong></div>
+    <div class="page-info"><strong>Noticias</strong><button class="button add" (click)="agregarNoticia()">
+      <i class="fas fa-plus"></i>
+  </button></div>
     <table>
         <thead>
           <tr>
@@ -34,6 +36,6 @@
     <button class="button back" (click)="cambiarPagina(paginaActual - 1)" [disabled]="paginaActual === 1">Anterior</button>
     <button class="button next" (click)="cambiarPagina(paginaActual + 1)" [disabled]="paginaActual * noticiasPorPagina >= noticias.length">Siguiente</button>
 </div>
-
+<app-add-popup></app-add-popup>
 <app-confirm-popup></app-confirm-popup>
 <app-edit-popup></app-edit-popup>

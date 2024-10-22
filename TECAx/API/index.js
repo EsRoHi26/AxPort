@@ -21,7 +21,7 @@ const rutaMiembros = require('./endpoints/miembros')
 const rutaNoticias = require('./endpoints/noticias')
 const rutaNormas = require('./endpoints/normas')
 const rutaEmail = require('./endpoints/email');
-
+const rutaModificarNoticias = require('./endpoints/modificarNoticias')
 
 app.use(function (req, res, next) {
 
@@ -49,7 +49,7 @@ app.use('/form', rutaForm);
 app.use('/miem', rutaMiembros );
 app.use('/not', rutaNoticias );
 app.use('/normas', rutaNormas );
-
+app.use('/modificar-noticias', rutaModificarNoticias);
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })

@@ -1,0 +1,22 @@
+<div *ngIf="visible" class="popup">
+  <div class="popup-content">
+      <h2>Agregar Noticia</h2>
+      <label for="titulo">Título:</label>
+      <input type="text" id="titulo" required [(ngModel)]="noticia.titulo" />
+
+      <label for="fecha">Fecha:</label>
+      <input type="text" id="fecha" required [(ngModel)]="noticia.fecha" />
+
+      <label for="linkimagen">Link de Imagen:</label>
+      <input type="text" id="linkimagen" [(ngModel)]="noticia.linkimagen" />
+
+      <label for="descripcionimagen">Descripción de Imagen:</label>
+      <input type="text" id="descripcionimagen" [(ngModel)]="noticia.descripcionimagen" />
+
+      <label for="linknoticia">Link de Noticia:</label>
+      <input type="text" id="linknoticia" [(ngModel)]="noticia.linknoticia" />
+
+      <button class="guardar-button" (click)="submit()">Agregar</button>
+      <button (click)="hide()">Cancelar</button>
+  </div>
+</div>

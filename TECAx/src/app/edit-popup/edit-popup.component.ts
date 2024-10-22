@@ -23,10 +23,15 @@ export class EditPopupComponent {
   }
 
   submit() {
+    // Validar que los campos no estén vacíos
+    if (!this.noticia.titulo || !this.noticia.fecha || !this.noticia.linkimagen || 
+        !this.noticia.descripcionimagen || !this.noticia.linknoticia) {
+      alert('Por favor, complete todos los campos requeridos: Título, Fecha, Link de Imagen, Descripción de Imagen y Link de Noticia.');
+      return; // Detener la ejecución si hay campos vacíos
+    }
+
     this.updateEvent.emit(this.noticia);  
     this.hide();
   }
-
-  
 }
 
