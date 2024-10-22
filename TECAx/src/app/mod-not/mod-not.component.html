@@ -1,1 +1,41 @@
-<p>mod-not works!</p>
+<div *ngIf="!noticias">Cargando datos...</div>
+<div class="table-container" *ngIf="noticias">
+    
+    <div class="page-info"><strong>Noticias</strong><button aria-haspopup="dialog" aria-controls="popup"  aria-label="Agregar Noticia" class="button add" (click)="agregarNoticia()">
+      <i class="fas fa-plus"></i>
+  </button></div>
+    <table>
+        <thead>
+          <tr>
+            
+            <th>Título</th>
+            <th>Fecha</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let noticia of noticiasPaginadas">
+            <td>{{ noticia.titulo }}</td>
+            <td>{{ noticia.fecha }}</td>
+            <td>
+            <button aria-haspopup="dialog" aria-controls="popup" aria-label="Modificar noticia" class="button modify" (click)="modificarNoticia(noticia,noticia.id)">
+                <i class="fas fa-edit"></i>
+              </button>
+            <button aria-haspopup="dialog" aria-controls="popup" aria-label="Eliminar noticia"class="button delete" (click)="eliminarNoticia(noticia.id)">
+                <i class="fas fa-trash-alt"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+    </table>
+
+    <div class="page-info">Página {{ paginaActual }} de {{ totalPaginas }}</div>
+</div>
+
+<div class="pagination">
+    <button class="button back" (click)="cambiarPagina(paginaActual - 1)" [disabled]="paginaActual === 1">Anterior</button>
+    <button class="button next" (click)="cambiarPagina(paginaActual + 1)" [disabled]="paginaActual * noticiasPorPagina >= noticias.length">Siguiente</button>
+</div>
+<app-add-popup></app-add-popup>
+<app-confirm-popup></app-confirm-popup>
+<app-edit-popup></app-edit-popup>

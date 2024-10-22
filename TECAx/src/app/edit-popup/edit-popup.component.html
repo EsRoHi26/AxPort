@@ -1,0 +1,23 @@
+<div *ngIf="visible" class="popup"role="dialog" aria-labelledby="popupTitle" aria-modal="true">
+    <div class="popup-content"   tabindex="-1">
+      <h2 id="popupTitle">Modificar Noticia</h2>
+      <label for="titulo">Título:</label>
+      <input type="text" [(ngModel)]="noticia.titulo" id="titulo" required />
+  
+      <label for="fecha">Fecha:</label>
+      <input type="text" [(ngModel)]="noticia.fecha" id="fecha" required />
+  
+      <label for="linkimagen">Link de Imagen:</label>
+      <input type="text" [(ngModel)]="noticia.linkimagen" id="linkimagen" />
+  
+      <label for="descripcionimagen">Descripción de Imagen:</label>
+      <input type="text" [(ngModel)]="noticia.descripcionimagen" id="descripcionimagen" />
+  
+      <label for="linknoticia">Link de Noticia:</label>
+      <input type="text" [(ngModel)]="noticia.linknoticia" id="linknoticia" />
+  
+      <button class="guardar-button" (click)="submit()">Guardar</button>
+      <button (click)="hide()">Cancelar</button>
+    </div>
+  </div>
+  
